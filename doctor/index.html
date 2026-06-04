@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Doctor Dashboard | Sansu Hospital</title>
+  <meta name="description" content="Sansu Hospital doctor dashboard for appointments, prescriptions, notes, patient details and video consultation.">
+  <link rel="stylesheet" href="../styles.css">
+  <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script defer src="../script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Sansu Hospital home"><span class="brand-mark"><i data-lucide="cross"></i></span><span><strong>SANSU</strong> HOSPITAL<small>Doctor Portal</small></span></a>
+    <nav class="main-nav open portal-nav" aria-label="Doctor navigation">
+      <a href="/">Home</a>
+      <a href="/patient">Patient</a>
+      <a href="/admin">Admin</a>
+    </nav>
+  </header>
+  <main>
+    <section class="section dashboard-section portal-hero tint">
+      <div class="section-head reveal">
+        <span class="eyebrow">Doctor login</span>
+        <h1>Doctor Dashboard</h1>
+        <p>Secure workspace for appointments, patient details, prescriptions, clinical notes, rescheduling and video consultations.</p>
+      </div>
+      <div class="dashboard-grid">
+        <article><h3>Today's appointments</h3><p>12 patients scheduled, 3 video consultations.</p><button>Start video consultation</button></article>
+        <article><h3>Clinical actions</h3><p>Accept, reject, reschedule, add prescription, upload notes and view history.</p><button>Add prescription</button></article>
+        <article><h3>Patient details</h3><p>Secure patient profile, reports, vitals and consultation history.</p><button>View patient</button></article>
+      </div>
+      <div class="table-wrap portal-table">
+        <table>
+          <thead><tr><th>Patient</th><th>Time</th><th>Type</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td>Riya Sharma</td><td>11:30 AM</td><td>Video</td><td><span class="badge green">Confirmed</span></td><td><button>Open case</button></td></tr>
+            <tr><td>Aarav Mishra</td><td>01:00 PM</td><td>Hospital Visit</td><td><span class="badge amber">Pending</span></td><td><button>Accept</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

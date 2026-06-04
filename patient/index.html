@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Patient Dashboard | Sansu Hospital</title>
+  <meta name="description" content="Sansu Hospital patient dashboard for appointments, payments, video consultation, lab tests, pharmacy orders, ambulance bookings and medical records.">
+  <link rel="stylesheet" href="../styles.css">
+  <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script defer src="../script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Sansu Hospital home"><span class="brand-mark"><i data-lucide="cross"></i></span><span><strong>SANSU</strong> HOSPITAL<small>Patient Portal</small></span></a>
+    <nav class="main-nav open portal-nav" aria-label="Patient navigation">
+      <a href="/">Home</a>
+      <a href="/#appointment">Book Appointment</a>
+      <a href="/doctor">Doctor Login</a>
+      <a href="/admin">Admin</a>
+    </nav>
+  </header>
+  <main>
+    <section class="section dashboard-section portal-hero">
+      <div class="section-head reveal">
+        <span class="eyebrow">Patient login / signup</span>
+        <h1>Patient Dashboard</h1>
+        <p>Manage appointments, booking payments, invoices, video consultation, lab tests, medicines, ambulance requests, prescriptions and reports.</p>
+      </div>
+      <div class="portal">
+        <aside>
+          <button class="active" data-panel="patient-profile"><i data-lucide="user"></i> Profile</button>
+          <button data-panel="patient-appointments"><i data-lucide="calendar-days"></i> Appointments</button>
+          <button data-panel="patient-records"><i data-lucide="file-text"></i> Records</button>
+          <button data-panel="patient-orders"><i data-lucide="package"></i> Tests & Orders</button>
+        </aside>
+        <div class="portal-panel active" id="patient-profile">
+          <h3>Riya Sharma</h3>
+          <p>Patient ID: SHP-1027 | Bhopal | +91 XXXXX XXXXX</p>
+          <div class="stat-row"><span>2 upcoming appointments</span><span>1 pending payment</span><span>3 reports uploaded</span><span>1 video link ready</span></div>
+        </div>
+        <div class="portal-panel" id="patient-appointments">
+          <div class="table-wrap"><table><thead><tr><th>Doctor</th><th>Date</th><th>Status</th><th>Payment</th><th>Action</th></tr></thead><tbody><tr><td>Dr. Priya Verma</td><td>Tomorrow, 11:30 AM</td><td><span class="badge green">Confirmed</span></td><td><span class="badge blue">Paid</span></td><td><button>Join video</button></td></tr><tr><td>Dr. Amit Sharma</td><td>Friday, 09:00 AM</td><td><span class="badge amber">Pending</span></td><td><span class="badge amber">Pending</span></td><td><button>Pay fee</button></td></tr></tbody></table></div>
+        </div>
+        <div class="portal-panel" id="patient-records">
+          <div class="upload-zone"><i data-lucide="upload-cloud"></i><span>Upload medical reports, view prescriptions, download invoices, cancel or reschedule appointments.</span></div>
+        </div>
+        <div class="portal-panel" id="patient-orders">
+          <div class="stat-row"><span>Lab booking: sample collection assigned</span><span>Medicine order: verification</span><span>Ambulance request: closed</span><span>Health package: booked</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

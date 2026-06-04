@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Panel | Sansu Hospital</title>
+  <meta name="description" content="Sansu Hospital admin panel for appointments, doctors, patients, departments, lab bookings, pharmacy orders, ambulance requests, payments and analytics.">
+  <link rel="stylesheet" href="../styles.css">
+  <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script defer src="../script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Sansu Hospital home"><span class="brand-mark"><i data-lucide="cross"></i></span><span><strong>SANSU</strong> HOSPITAL<small>Admin Panel</small></span></a>
+    <nav class="main-nav open portal-nav" aria-label="Admin navigation">
+      <a href="/">Home</a>
+      <a href="/patient">Patient</a>
+      <a href="/doctor">Doctor</a>
+    </nav>
+  </header>
+  <main>
+    <section class="section dashboard-section portal-hero">
+      <div class="section-head reveal">
+        <span class="eyebrow">Admin panel</span>
+        <h1>Hospital Management Console</h1>
+        <p>Manage appointments, doctors, patients, departments, lab tests, pharmacy, ambulance requests, payments, invoices, reports and analytics.</p>
+      </div>
+      <div class="admin-stats">
+        <span><strong>128</strong> Appointments</span><span><strong>42</strong> Lab bookings</span><span><strong>31</strong> Pharmacy orders</span><span><strong>9</strong> Ambulance requests</span><span><strong>Rs. 86k</strong> Payments</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Module</th><th>Management actions</th><th>Status controls</th></tr></thead>
+          <tbody>
+            <tr><td>Appointments</td><td>Manage bookings, reschedule, generate invoice</td><td>Pending, Paid, Failed, Refunded</td></tr>
+            <tr><td>Doctors</td><td>Add/edit/delete doctors, schedules and fees</td><td>Active, On leave</td></tr>
+            <tr><td>Departments</td><td>Add/edit/delete departments and doctor count</td><td>Published, Draft</td></tr>
+            <tr><td>Patients</td><td>Profiles, reports, prescriptions, payment history</td><td>Verified, Follow-up</td></tr>
+            <tr><td>Lab Tests</td><td>Bookings, prescriptions, home collection and reports</td><td>Booked, Collected, Reported</td></tr>
+            <tr><td>Pharmacy</td><td>Orders, prescription verification and delivery</td><td>Pending, Packed, Delivered</td></tr>
+            <tr><td>Analytics</td><td>Reports for OPD, revenue, lab, pharmacy and ambulance</td><td>Daily, monthly</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

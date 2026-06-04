@@ -1,0 +1,290 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sansu Hospital Bhopal | Multi-Specialty Hospital & Online Appointment</title>
+  <meta name="description" content="Book appointments online at Sansu Hospital, Bhopal. Multi-specialty care, doctors, ambulance, lab tests, pharmacy, video consultation, and emergency services.">
+  <meta name="theme-color" content="#073b70">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Sansu Hospital home">
+      <span class="brand-mark"><i data-lucide="cross"></i></span>
+      <span><strong>SANSU</strong> HOSPITAL<small>Bhopal, Madhya Pradesh</small></span>
+    </a>
+    <button class="nav-toggle" aria-label="Open menu"><i data-lucide="menu"></i></button>
+    <nav class="main-nav" aria-label="Primary navigation">
+      <a href="#about">About</a>
+      <a href="#departments">Departments</a>
+      <a href="#doctors">Doctors</a>
+      <a href="#appointment">Appointment</a>
+      <a href="#lab">Lab</a>
+      <a href="#pharmacy">Pharmacy</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="pill emergency" href="tel:+919999999999"><i data-lucide="phone-call"></i> Emergency</a>
+      <a class="pill primary" href="#appointment">Book</a>
+      <div class="login-menu">
+        <button class="pill ghost" type="button"><i data-lucide="user-round"></i> Login</button>
+        <div class="login-dropdown">
+          <a href="/patient">Patient Login</a>
+          <a href="/doctor">Doctor Login</a>
+          <a href="/admin">Admin Panel</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero section">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">Multi-specialty hospital in Bhopal</span>
+        <h1>Advanced Healthcare You Can Trust</h1>
+        <p>Sansu Hospital, Bhopal provides modern multi-specialty care with experienced doctors, advanced facilities, emergency support, online appointments, lab tests, pharmacy, ambulance, and video consultation.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#appointment"><i data-lucide="calendar-plus"></i> Book Appointment</a>
+          <a class="btn danger" href="#ambulance"><i data-lucide="siren"></i> Emergency Help</a>
+          <a class="btn secondary" href="#video"><i data-lucide="video"></i> Video Consultation</a>
+        </div>
+        <div class="hero-stats">
+          <span><strong>18+</strong> Departments</span>
+          <span><strong>24/7</strong> Emergency</span>
+          <span><strong>4.8</strong> Patient Rating</span>
+        </div>
+      </div>
+      <div class="hero-visual hero-3d reveal" aria-label="Automated 3D hospital overview">
+        <canvas id="hospitalScene" aria-hidden="true"></canvas>
+        <div class="scene-glow"></div>
+        <div class="scene-hud">
+          <div class="hud-status"><span></span> Live hospital command</div>
+          <strong id="tourTitle">Smart Appointment Flow</strong>
+          <p id="tourText">Booking, payment and doctor assignment move through one connected digital desk.</p>
+          <div class="tour-meter"><span id="tourMeter"></span></div>
+        </div>
+        <div class="floating-card floating-card-3d">
+          <i data-lucide="heart-pulse"></i>
+          <div><strong id="floatingTitle">Rapid Care Desk</strong><span id="floatingText">Appointment, tests and emergency support in one place</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-grid section slim" aria-label="Hospital services summary">
+      <article><i data-lucide="ambulance"></i><strong>Emergency</strong><span>Critical care response</span></article>
+      <article><i data-lucide="stethoscope"></i><strong>OPD Booking</strong><span>Doctors and specialties</span></article>
+      <article><i data-lucide="flask-conical"></i><strong>Diagnostics</strong><span>Lab and radiology</span></article>
+      <article><i data-lucide="pill"></i><strong>Pharmacy</strong><span>Prescription delivery</span></article>
+    </section>
+
+    <section class="section overview-stage" aria-label="Automated website overview">
+      <div class="section-head reveal">
+        <span class="eyebrow">Automated care overview</span>
+        <h2>Every hospital workflow connected in motion</h2>
+      </div>
+      <div class="overview-rail reveal" id="overviewRail">
+        <article class="overview-card active"><i data-lucide="calendar-check"></i><strong>Book</strong><span>Appointment request</span></article>
+        <article class="overview-card"><i data-lucide="credit-card"></i><strong>Pay</strong><span>Booking charge</span></article>
+        <article class="overview-card"><i data-lucide="stethoscope"></i><strong>Consult</strong><span>Visit or video</span></article>
+        <article class="overview-card"><i data-lucide="flask-conical"></i><strong>Test</strong><span>Lab diagnostics</span></article>
+        <article class="overview-card"><i data-lucide="pill"></i><strong>Deliver</strong><span>Medicine order</span></article>
+        <article class="overview-card"><i data-lucide="bar-chart-3"></i><strong>Manage</strong><span>Admin analytics</span></article>
+      </div>
+    </section>
+
+    <section id="appointment" class="section split">
+      <div class="section-copy reveal">
+        <span class="eyebrow">Online appointment booking</span>
+        <h2>Book a doctor visit or video consultation</h2>
+        <p>Use a practical booking flow with minimal required details, optional report upload, booking charge, payment status and patient follow-up message.</p>
+        <div class="notice"><i data-lucide="shield-check"></i> Booking charge: <strong>Rs. 199</strong>. Consultation fee is paid as per selected doctor.</div>
+      </div>
+      <form class="form-card reveal" id="appointmentForm">
+        <div class="form-grid">
+          <label>Patient full name<input required name="name" placeholder="Enter full name"></label>
+          <label>Mobile number<input required name="phone" inputmode="tel" placeholder="+91"></label>
+          <label>Email<input required type="email" name="email" placeholder="name@example.com"></label>
+          <label>Age<input type="number" min="1" max="120" name="age" placeholder="Age"></label>
+          <label>Gender<select name="gender"><option>Female</option><option>Male</option><option>Other</option></select></label>
+          <label>City<input name="city" value="Bhopal"></label>
+          <label>Select department<select id="departmentSelect" name="department"></select></label>
+          <label>Select doctor<select id="doctorSelect" name="doctor"></select></label>
+          <label>Appointment type<select name="type"><option>Hospital Visit</option><option>Video Consultation</option></select></label>
+          <label>Preferred date<input required type="date" name="date"></label>
+          <label>Preferred time slot<select name="slot"><option>09:00 AM - 11:00 AM</option><option>11:30 AM - 01:30 PM</option><option>03:00 PM - 05:00 PM</option><option>06:00 PM - 08:00 PM</option></select></label>
+          <label>Payment amount<input readonly value="Rs. 199 booking charge"></label>
+          <label class="wide">Symptoms / health concern<textarea name="symptoms" placeholder="Briefly describe your concern"></textarea></label>
+          <label class="wide">Upload previous report optional<input type="file" name="report" accept=".pdf,.jpg,.jpeg,.png"></label>
+        </div>
+        <div class="form-actions">
+          <button class="btn secondary" type="button" id="payBtn"><i data-lucide="credit-card"></i> Pay Now</button>
+          <button class="btn primary" type="submit"><i data-lucide="send"></i> Submit Appointment</button>
+        </div>
+        <p class="success-msg" id="appointmentSuccess">Your appointment request has been submitted successfully. Our team will contact you shortly.</p>
+      </form>
+    </section>
+
+    <section id="about" class="section about">
+      <div class="section-copy reveal">
+        <span class="eyebrow">About Sansu Hospital</span>
+        <h2>Premium, patient-first healthcare for Bhopal</h2>
+        <p>SANSU HOSPITAL is designed as a single multi-specialty hospital with digital care access, modern OPD workflows, ICU support, diagnostics, pharmacy, ambulance coordination and secure patient records.</p>
+      </div>
+      <div class="feature-list reveal">
+        <span><i data-lucide="check-circle"></i> Experienced doctors</span>
+        <span><i data-lucide="check-circle"></i> Modern medical equipment</span>
+        <span><i data-lucide="check-circle"></i> Online payment</span>
+        <span><i data-lucide="check-circle"></i> Clean and safe environment</span>
+        <span><i data-lucide="check-circle"></i> Affordable healthcare</span>
+        <span><i data-lucide="check-circle"></i> Patient-first care</span>
+      </div>
+    </section>
+
+    <section id="departments" class="section">
+      <div class="section-head reveal">
+        <span class="eyebrow">Departments</span>
+        <h2>Specialized care across major medical disciplines</h2>
+      </div>
+      <div class="card-grid" id="departmentGrid"></div>
+    </section>
+
+    <section id="doctors" class="section tint">
+      <div class="section-head reveal">
+        <span class="eyebrow">Doctors</span>
+        <h2>Consult experienced specialists</h2>
+      </div>
+      <div class="doctor-grid" id="doctorGrid"></div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="section-head reveal">
+        <span class="eyebrow">Services</span>
+        <h2>Hospital services designed for complete care</h2>
+      </div>
+      <div class="service-grid" id="serviceGrid"></div>
+    </section>
+
+    <section id="video" class="section split">
+      <div class="section-copy reveal">
+        <span class="eyebrow">Video consultation</span>
+        <h2>Consult doctors from your dashboard</h2>
+        <p>Select a doctor, pay consultation fee, receive a meeting link, and join securely from the patient dashboard.</p>
+      </div>
+      <form class="form-card compact reveal" id="videoForm">
+        <label>Select doctor<select id="videoDoctor"></select></label>
+        <label>Concern<textarea placeholder="Tell the doctor what you need help with"></textarea></label>
+        <label>Payment option<select><option>UPI</option><option>Card</option><option>Net banking</option></select></label>
+        <button class="btn primary" type="submit"><i data-lucide="video"></i> Pay & Generate Link</button>
+        <p class="success-msg">Video consultation link created. Join link is visible in your dashboard.</p>
+      </form>
+    </section>
+
+    <section id="ambulance" class="section split tint">
+      <div class="section-copy reveal">
+        <span class="eyebrow">Ambulance booking</span>
+        <h2>Emergency transport request</h2>
+        <p>Submit pickup and patient details for rapid ambulance coordination by the Sansu emergency desk.</p>
+      </div>
+      <form class="form-card compact reveal" id="ambulanceForm">
+        <div class="form-grid">
+          <label>Name<input required placeholder="Patient/attendant name"></label>
+          <label>Phone<input required placeholder="+91"></label>
+          <label>Pickup location<input required placeholder="Pickup address"></label>
+          <label>Drop location<input placeholder="Sansu Hospital / other"></label>
+          <label>Emergency type<select><option>Accident</option><option>Cardiac</option><option>Pregnancy</option><option>General emergency</option></select></label>
+          <label>Date/time<input type="datetime-local"></label>
+          <label class="wide">Patient condition<textarea placeholder="Brief condition"></textarea></label>
+        </div>
+        <button class="btn danger" type="submit"><i data-lucide="ambulance"></i> Submit Request</button>
+        <p class="success-msg">Ambulance request submitted. Emergency desk will call shortly.</p>
+      </form>
+    </section>
+
+    <section id="lab" class="section split">
+      <div class="section-copy reveal">
+        <span class="eyebrow">Lab tests</span>
+        <h2>Book diagnostics and home sample collection</h2>
+        <p>Select tests, choose date and time, upload prescription, enter address and pay online.</p>
+      </div>
+      <form class="form-card compact reveal" id="labForm">
+        <label>Select tests<select multiple size="5"><option>CBC</option><option>Liver Function Test</option><option>Kidney Function Test</option><option>Thyroid Profile</option><option>Lipid Profile</option><option>HbA1c</option></select></label>
+        <label>Date/time<input type="datetime-local"></label>
+        <label>Upload prescription<input type="file" accept=".pdf,.jpg,.png"></label>
+        <label>Address<textarea placeholder="Collection address"></textarea></label>
+        <button class="btn primary" type="submit"><i data-lucide="flask-conical"></i> Pay & Book Lab Test</button>
+        <p class="success-msg">Lab test booking confirmed. Sample collection details have been added to your dashboard.</p>
+      </form>
+    </section>
+
+    <section id="pharmacy" class="section split tint">
+      <div class="section-copy reveal">
+        <span class="eyebrow">Pharmacy</span>
+        <h2>Order medicines with prescription upload</h2>
+        <p>Request medicines, choose delivery address and track the order status from the patient dashboard.</p>
+      </div>
+      <form class="form-card compact reveal" id="pharmacyForm">
+        <div class="form-grid">
+          <label>Medicine name<input required placeholder="Medicine"></label>
+          <label>Quantity<input type="number" min="1" value="1"></label>
+          <label>Prescription<input type="file" accept=".pdf,.jpg,.png"></label>
+          <label>Payment option<select><option>UPI</option><option>Card</option><option>Cash on delivery</option></select></label>
+          <label class="wide">Delivery address<textarea required placeholder="Full address"></textarea></label>
+        </div>
+        <button class="btn primary" type="submit"><i data-lucide="pill"></i> Place Medicine Order</button>
+        <p class="success-msg">Pharmacy order placed. Tracking status: prescription verification.</p>
+      </form>
+    </section>
+
+    <section id="packages" class="section">
+      <div class="section-head reveal">
+        <span class="eyebrow">Health packages</span>
+        <h2>Preventive checkups</h2>
+      </div>
+      <div class="package-grid">
+        <article><h3>Essential Care</h3><p>CBC, sugar, lipid profile, physician consult.</p><strong>Rs. 999</strong><a href="#lab">Book</a></article>
+        <article><h3>Cardiac Plus</h3><p>ECG, lipid profile, kidney function, cardiology consult.</p><strong>Rs. 2,499</strong><a href="#lab">Book</a></article>
+        <article><h3>Family Wellness</h3><p>Complete body screening for adults with reports.</p><strong>Rs. 3,999</strong><a href="#lab">Book</a></article>
+      </div>
+    </section>
+
+
+    <section id="contact" class="section split">
+      <div class="section-copy reveal">
+        <span class="eyebrow">Contact us</span>
+        <h2>Sansu Hospital</h2>
+        <p>Bhopal, Madhya Pradesh</p>
+        <p><strong>Phone:</strong> +91 XXXXX XXXXX<br><strong>Email:</strong> info@sansuhospital.com<br><strong>Emergency:</strong> +91 XXXXX XXXXX</p>
+        <div class="map-placeholder"><i data-lucide="map-pin"></i> Google Map embed placeholder</div>
+      </div>
+      <form class="form-card compact reveal" id="contactForm">
+        <label>Name<input required placeholder="Your name"></label>
+        <label>Email<input type="email" placeholder="Your email"></label>
+        <label>Message<textarea required placeholder="How can we help?"></textarea></label>
+        <button class="btn primary" type="submit"><i data-lucide="mail"></i> Send Message</button>
+        <p class="success-msg">Thank you. Our patient support team will reply shortly.</p>
+      </form>
+    </section>
+
+    <section id="terms" class="section terms">
+      <h2>Terms & Privacy Policy</h2>
+      <p>This demo website uses secure-design placeholders for appointments, payments, reports, prescriptions and dashboards. In production, patient data must be protected with authenticated access, encrypted storage, audit logs, consent handling, payment gateway security and applicable healthcare privacy compliance.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <a class="brand footer-brand" href="#home"><span class="brand-mark"><i data-lucide="cross"></i></span><span><strong>SANSU</strong> HOSPITAL</span></a>
+      <p>Modern multi-specialty care in Bhopal with online appointments, diagnostics, pharmacy, ambulance and video consultation.</p>
+    </div>
+    <div><h3>Quick links</h3><a href="#about">About</a><a href="#doctors">Doctors</a><a href="#appointment">Book appointment</a><a href="#terms">Terms & Privacy</a></div>
+    <div><h3>Departments</h3><a href="#departments">Cardiology</a><a href="#departments">Neurology</a><a href="#departments">Orthopedics</a><a href="#departments">Gynecology</a></div>
+    <div><h3>Contact</h3><p>Bhopal, Madhya Pradesh<br>Emergency: +91 XXXXX XXXXX</p><div class="social" aria-label="Social media links"><i data-lucide="message-circle"></i><i data-lucide="camera"></i><i data-lucide="briefcase-business"></i></div></div>
+    <small>Copyright 2026 SANSU HOSPITAL. All rights reserved.</small>
+  </footer>
+</body>
+</html>
