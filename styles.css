@@ -317,6 +317,13 @@ h2{font-weight:800;font-size:clamp(30px,4vw,48px)}
 
 .form-card{padding:28px}
 input,select,textarea{min-height:46px}
+select{
+  height:46px;
+  line-height:1.2;
+}
+select[multiple]{
+  height:auto;
+}
 .department-card img{height:168px}
 .doctor-card img{height:220px}
 .availability-grid{
