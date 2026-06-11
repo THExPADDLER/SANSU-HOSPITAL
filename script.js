@@ -8,7 +8,7 @@ const departments = [
   ["Gastroenterology","Soup","Digestive, liver, acidity, endoscopy and abdominal care.",3,"https://images.unsplash.com/photo-1588776813677-77aaf5595b83?auto=format&fit=crop&w=600&q=70"],
   ["Nephrology","Droplets","Kidney, dialysis guidance, hypertension and renal care.",2,"https://images.unsplash.com/photo-1588776814291-3933f1e36072?auto=format&fit=crop&w=600&q=70"],
   ["Pediatrics","Baby","Child health, vaccination, growth and pediatric emergency care.",4,"https://images.unsplash.com/photo-1588776814546-daab30f310ce?auto=format&fit=crop&w=600&q=70"],
-  ["Gynecology","Heart","Women’s health, pregnancy care, fertility guidance and delivery support.",4,"https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=70"],
+  ["Gynecology","Heart","Womenâ€™s health, pregnancy care, fertility guidance and delivery support.",4,"https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=70"],
   ["Dermatology","Sparkles","Skin, hair, allergy, acne and cosmetic dermatology services.",2,"https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=70"],
   ["ENT","Ear","Ear, nose, throat, sinus, hearing and voice care.",2,"https://images.unsplash.com/photo-1588776813677-77aaf5595b83?auto=format&fit=crop&w=600&q=70"],
   ["Urology","ShieldPlus","Urinary, prostate, stone and male health consultations.",2,"https://images.unsplash.com/photo-1588776814546-1ffcf47267a9?auto=format&fit=crop&w=600&q=70"],
@@ -37,17 +37,17 @@ const services = [
 ];
 
 const careTour = [
-  ["#home","Home Overview","3D hospital command scene with live emergency, OPD, lab, pharmacy and dashboard signals.","Rapid Care Desk","Appointment, tests and emergency support in one place"],
-  ["#appointment","Appointment Booking","Patient details, doctor selection, visit type, report upload and booking charge payment.","Booking Engine","Doctor slots, payments and requests move together"],
-  ["#departments","Departments","Eighteen specialties are visible with care descriptions and direct appointment actions.","Specialty Network","Departments connect patients to the right clinical team"],
-  ["#doctors","Doctors","Verified doctor cards show fee, experience, rating, schedule and consultation action.","Doctor Finder","Specialists are ready for hospital visit or video consult"],
-  ["#video","Video Consultation","Patient selects doctor, pays consultation fee and receives a meeting link.","Virtual OPD","Remote care links are generated from the dashboard"],
-  ["#ambulance","Ambulance Booking","Emergency transport captures pickup, drop, type, condition and date/time.","Emergency Dispatch","Ambulance requests route to the rapid response desk"],
-  ["#lab","Lab Tests","Diagnostics can be selected with prescription upload, address and online payment.","Diagnostics Flow","Lab bookings and home collection move into patient records"],
-  ["#pharmacy","Pharmacy","Prescription upload, medicine quantity, address, payment and tracking are handled online.","Medicine Delivery","Orders move from verification to delivery tracking"],
-  ["#packages","Health Packages","Preventive checkups are packaged for fast booking and transparent pricing.","Wellness Plans","Health checkups connect lab, consult and reports"],
-  ["#contact","Contact","Support, emergency phone, email, map placeholder and enquiry form remain easy to reach.","Support Desk","Patients can reach the hospital from every care path"],
-  ["#terms","Terms & Privacy","Production use requires secure authentication, encrypted data, audit logs and compliance.","Secure Foundation","Privacy and payment safety are part of real deployment"]
+  ["#home","Care Beyond Boundaries","A premium connected-care front door for emergency, OPD, diagnostics, pharmacy and virtual consultation.","Velora Care Desk","Clinical access, service coordination and support in one place"],
+  ["#appointment","Appointment Desk","Patient details, doctor selection, visit type, report upload and booking payment are kept clear and efficient.","Booking Coordination","Doctor slots, payment status and requests stay aligned"],
+  ["#departments","Clinical Departments","Eighteen specialties are organized for quick scanning, clear decisions and direct booking.","Specialty Network","Patients move to the right clinical team without friction"],
+  ["#doctors","Doctor Discovery","Doctor cards show fee, experience, schedule, rating and consultation action without visual clutter.","Doctor Finder","Specialists are ready for hospital visits or video consults"],
+  ["#video","Virtual OPD","Patients select a doctor, pay the consultation fee and receive a meeting link from their portal.","Virtual Consultation","Remote care is connected to records and follow-up"],
+  ["#ambulance","Emergency Dispatch","Pickup, drop, emergency type, condition and timing are captured for response coordination.","Emergency Desk","Ambulance requests route to the rapid response desk"],
+  ["#lab","Diagnostics","Tests, prescription upload, collection address and online payment are grouped into a clean booking flow.","Diagnostics Flow","Lab bookings connect to patient reports"],
+  ["#pharmacy","Pharmacy Orders","Prescription upload, medicine quantity, delivery address, payment and tracking stay practical.","Medicine Delivery","Orders move from verification to delivery tracking"],
+  ["#packages","Health Packages","Preventive checkups are presented with straightforward pricing and booking actions.","Wellness Plans","Health checkups connect lab, consult and reports"],
+  ["#contact","Contact & Support","Support, emergency phone, email, map placeholder and enquiry form remain easy to reach.","Support Desk","Patients can reach Velora from every care path"],
+  ["#terms","Privacy Foundation","Production deployment requires secure authentication, encrypted data, audit logs and compliance.","Secure Foundation","Privacy and payment safety are part of real operations"]
 ];
 
 const tourCardMap = [0, 0, 2, 2, 2, 0, 3, 4, 3, 5, 5];
@@ -70,7 +70,7 @@ function renderDepartments() {
   if (!grid) return;
   grid.innerHTML = departments.map(([name, icon, desc, count, img]) => `
     <article class="department-card reveal">
-      <img loading="lazy" src="${img}" alt="${name} department at Sansu Hospital">
+      <img loading="lazy" src="${img}" alt="${name} department at Velora Hospitals">
       <div>
         ${iconTag(icon)}
         <h3>${name}</h3>
@@ -141,7 +141,7 @@ function wireHeader() {
   nav?.querySelectorAll("a").forEach(link => link.addEventListener("click", () => nav.classList.remove("open")));
 }
 
-function wireAutomatedOverview() {
+function wireCareOverview() {
   const title = document.querySelector("#tourTitle");
   const text = document.querySelector("#tourText");
   const floatingTitle = document.querySelector("#floatingTitle");
@@ -150,14 +150,7 @@ function wireAutomatedOverview() {
   const overviewCards = [...document.querySelectorAll(".overview-card")];
   if (!title || !text || !meter) return;
 
-  const pill = document.createElement("div");
-  pill.className = "autopilot-pill";
-  pill.innerHTML = `${iconTag("Sparkles")}<div><strong>Automated website overview</strong><span id="autoTourLabel">Home Overview</span></div>`;
-  document.body.append(pill);
-  if (window.lucide) lucide.createIcons();
-
   let index = 0;
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const updateTour = () => {
     const [selector, heading, description, floatHeading, floatDescription] = careTour[index];
     title.textContent = heading;
@@ -165,12 +158,11 @@ function wireAutomatedOverview() {
     floatingTitle.textContent = floatHeading;
     floatingText.textContent = floatDescription;
     meter.style.width = `${((index + 1) / careTour.length) * 100}%`;
-    document.querySelector("#autoTourLabel").textContent = heading;
     document.querySelectorAll(".tour-highlight").forEach(item => item.classList.remove("tour-highlight"));
     const section = document.querySelector(selector);
     section?.classList.add("tour-highlight");
     overviewCards.forEach((card, cardIndex) => card.classList.toggle("active", cardIndex === tourCardMap[index]));
-    window.sansuSceneState = { index, heading };
+    window.veloraSceneState = { index, heading };
   };
 
   updateTour();
@@ -206,18 +198,18 @@ async function initHospitalScene() {
   key.position.set(5, 8, 6);
   key.castShadow = true;
   scene.add(key);
-  const blueLight = new THREE.PointLight(0x1ca7ec, 3.2, 18);
-  blueLight.position.set(-4, 3, 3);
-  scene.add(blueLight);
-  const greenLight = new THREE.PointLight(0x32b67a, 2.8, 18);
-  greenLight.position.set(4, 2.5, -2);
-  scene.add(greenLight);
+  const cherryLight = new THREE.PointLight(0xb01835, 3.2, 18);
+  cherryLight.position.set(-4, 3, 3);
+  scene.add(cherryLight);
+  const maroonLight = new THREE.PointLight(0x7b1028, 2.8, 18);
+  maroonLight.position.set(4, 2.5, -2);
+  scene.add(maroonLight);
 
   const baseMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.48, metalness: 0.08 });
-  const blueMat = new THREE.MeshStandardMaterial({ color: 0x087fc4, roughness: 0.35, metalness: 0.12 });
-  const navyMat = new THREE.MeshStandardMaterial({ color: 0x073b70, roughness: 0.42, metalness: 0.08 });
-  const greenMat = new THREE.MeshStandardMaterial({ color: 0x32b67a, emissive: 0x0d5d3d, emissiveIntensity: 0.18 });
-  const glassMat = new THREE.MeshStandardMaterial({ color: 0xdff5ff, transparent: true, opacity: 0.58, roughness: 0.18, metalness: 0.18 });
+  const blueMat = new THREE.MeshStandardMaterial({ color: 0xb01835, roughness: 0.35, metalness: 0.12 });
+  const navyMat = new THREE.MeshStandardMaterial({ color: 0x5b0f1f, roughness: 0.42, metalness: 0.08 });
+  const greenMat = new THREE.MeshStandardMaterial({ color: 0x8f1730, emissive: 0x5b0f1f, emissiveIntensity: 0.18 });
+  const glassMat = new THREE.MeshStandardMaterial({ color: 0xffe9ee, transparent: true, opacity: 0.58, roughness: 0.18, metalness: 0.18 });
 
   const addBox = (w, h, d, x, y, z, mat) => {
     const mesh = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
@@ -247,7 +239,7 @@ async function initHospitalScene() {
 
   const floor = new THREE.Mesh(
     new THREE.CylinderGeometry(5.8, 6.8, 0.18, 72),
-    new THREE.MeshStandardMaterial({ color: 0xeaf7ff, roughness: 0.7 })
+    new THREE.MeshStandardMaterial({ color: 0xfff1f3, roughness: 0.7 })
   );
   floor.position.y = -0.12;
   floor.receiveShadow = true;
@@ -255,7 +247,7 @@ async function initHospitalScene() {
 
   const nodeGroup = new THREE.Group();
   group.add(nodeGroup);
-  const nodeMat = new THREE.MeshStandardMaterial({ color: 0x32b67a, emissive: 0x32b67a, emissiveIntensity: 0.45 });
+  const nodeMat = new THREE.MeshStandardMaterial({ color: 0xb01835, emissive: 0xb01835, emissiveIntensity: 0.45 });
   const nodeGeo = new THREE.SphereGeometry(0.13, 24, 24);
   const nodes = [];
   for (let i = 0; i < 14; i++) {
@@ -277,7 +269,7 @@ async function initHospitalScene() {
   particleGeo.setAttribute("position", new THREE.BufferAttribute(particlePositions, 3));
   const particles = new THREE.Points(
     particleGeo,
-    new THREE.PointsMaterial({ color: 0x087fc4, size: 0.045, transparent: true, opacity: 0.42 })
+    new THREE.PointsMaterial({ color: 0xb01835, size: 0.045, transparent: true, opacity: 0.42 })
   );
   scene.add(particles);
 
@@ -285,7 +277,7 @@ async function initHospitalScene() {
   for (let i = 0; i < 3; i++) {
     const ring = new THREE.Mesh(
       new THREE.TorusGeometry(3.5 + i * 0.55, 0.012, 8, 140),
-      new THREE.MeshBasicMaterial({ color: i === 1 ? 0x32b67a : 0x087fc4, transparent: true, opacity: 0.34 })
+      new THREE.MeshBasicMaterial({ color: i === 1 ? 0x8f1730 : 0xb01835, transparent: true, opacity: 0.34 })
     );
     ring.rotation.x = Math.PI / 2.22;
     ring.position.y = 1 + i * 0.55;
@@ -305,13 +297,13 @@ async function initHospitalScene() {
   const clock = new THREE.Clock();
   const animate = () => {
     const t = clock.getElapsedTime();
-    const tourIndex = window.sansuSceneState?.index || 0;
+    const tourIndex = window.veloraSceneState?.index || 0;
     group.rotation.y = Math.sin(t * 0.3) * 0.18 + tourIndex * 0.015;
     group.rotation.x = Math.sin(t * 0.22) * 0.045;
     nodeGroup.rotation.y = t * 0.55;
     particles.rotation.y = -t * 0.055;
-    blueLight.intensity = 2.4 + Math.sin(t * 2.2) * 0.8;
-    greenLight.intensity = 2.2 + Math.cos(t * 1.8) * 0.8;
+    cherryLight.intensity = 2.4 + Math.sin(t * 2.2) * 0.8;
+    maroonLight.intensity = 2.2 + Math.cos(t * 1.8) * 0.8;
     nodes.forEach((node, i) => {
       node.scale.setScalar(1 + Math.sin(t * 3 + i) * 0.35);
     });
@@ -347,8 +339,9 @@ document.addEventListener("DOMContentLoaded", () => {
   wireForms();
   wirePortal();
   wireHeader();
-  wireAutomatedOverview();
+  wireCareOverview();
   revealOnScroll();
   initHospitalScene().catch(error => console.warn("3D scene unavailable", error));
   if (window.lucide) lucide.createIcons();
 });
+

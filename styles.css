@@ -1,14 +1,14 @@
 :root{
-  --navy:#073b70;
-  --navy-2:#0b2748;
-  --blue:#087fc4;
-  --sky:#eaf7ff;
-  --green:#32b67a;
-  --mint:#eafaf2;
+  --navy:#5b0f1f;
+  --navy-2:#340812;
+  --blue:#b01835;
+  --sky:#fff1f3;
+  --green:#8f1730;
+  --mint:#fff4f5;
   --ink:#172033;
   --muted:#657184;
-  --line:#dbe8f2;
-  --bg:#f7fbfd;
+  --line:#f0d7dc;
+  --bg:#fffafa;
   --white:#fff;
   --danger:#df3b42;
   --amber:#f2a51a;
@@ -205,3 +205,129 @@ th{color:var(--navy);background:#f4f9fc}
 @media (prefers-reduced-motion:reduce){
   *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
 }
+
+/* Professional Velora UI refinement layer */
+:root{
+  --navy:#5b0f1f;
+  --navy-2:#340812;
+  --blue:#b01835;
+  --sky:#fff1f3;
+  --green:#8f1730;
+  --mint:#fff4f5;
+  --line:#f0d7dc;
+  --bg:#fffafa;
+  --shadow-soft:0 8px 28px rgba(15,35,55,.08);
+  --shadow-premium:0 26px 80px rgba(91,15,31,.16);
+}
+
+body{
+  background:#fbfdff;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+
+.site-header{
+  padding:13px clamp(18px,4vw,56px);
+  background:rgba(255,255,255,.95);
+  box-shadow:0 8px 30px rgba(91,15,31,.05);
+}
+
+.brand{gap:11px}
+.brand-mark{background:linear-gradient(135deg,#4a0715,#b01835);box-shadow:0 12px 28px rgba(176,24,53,.22)}
+.main-nav{gap:20px}
+.pill,.btn{min-height:44px;justify-content:center}
+
+.section{padding:84px clamp(18px,5vw,72px)}
+.hero{
+  grid-template-columns:minmax(0,1fr) minmax(390px,.92fr);
+  gap:56px;
+  background:linear-gradient(135deg,#fff 0%,#fff5f6 56%,#fbebee 100%);
+}
+
+h1{font-weight:800;font-size:clamp(42px,6.2vw,78px)}
+h2{font-weight:800;font-size:clamp(30px,4vw,48px)}
+.hero-copy p{color:#526276}
+
+.hero-3d{
+  min-height:min(620px,72vh);
+  background:linear-gradient(145deg,#fff,#fff1f3 55%,#fae4e9);
+  border:1px solid rgba(240,215,220,.95);
+  box-shadow:var(--shadow-premium);
+}
+
+.scene-hud{
+  background:rgba(255,255,255,.88);
+  box-shadow:0 18px 46px rgba(91,15,31,.12);
+  animation:none;
+}
+
+.floating-card-3d{animation:floatCard 7.5s ease-in-out infinite}
+
+.hero-stats span,
+.admin-stats span,
+.stat-row span,
+.quick-grid article,
+.service-grid article,
+.package-grid article,
+.dashboard-grid article,
+.department-card,
+.doctor-card,
+.form-card,
+.portal,
+.table-wrap,
+.feature-list,
+.map-placeholder{
+  box-shadow:var(--shadow-soft);
+}
+
+.quick-grid article:hover,
+.service-grid article:hover,
+.package-grid article:hover,
+.dashboard-grid article:hover,
+.department-card:hover,
+.doctor-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 22px 54px rgba(91,15,31,.12);
+}
+
+.overview-stage{background:linear-gradient(135deg,#fffafa,#fff1f3 52%,#fff)}
+.overview-card{
+  min-height:138px;
+  padding:18px;
+  background:rgba(255,255,255,.86);
+  box-shadow:var(--shadow-soft);
+}
+.overview-card.active{
+  transform:translateY(-8px);
+  box-shadow:0 24px 70px rgba(176,24,53,.14);
+}
+
+.form-card{padding:28px}
+input,select,textarea{min-height:46px}
+.department-card img{height:168px}
+.doctor-card img{height:220px}
+
+.portal-hero{background:linear-gradient(145deg,#fff,#fff5f6 58%,#fbebee)}
+.portal{grid-template-columns:280px 1fr;min-height:330px}
+.portal-panel{min-width:0}
+.table-wrap{max-width:100%}
+.autopilot-pill{display:none!important}
+.tour-highlight{outline:0}
+
+@media (max-width:1100px){
+  .hero{grid-template-columns:1fr}
+  .hero-3d{min-height:540px}
+}
+
+@media (max-width:720px){
+  .section{padding:56px 16px}
+  .hero{gap:28px;padding-top:44px}
+  .hero-3d{min-height:460px}
+  .scene-hud{position:absolute;left:12px;right:12px;top:12px;width:auto}
+  .hero-actions .btn{width:100%}
+  .hero-stats span{flex:1 1 100%}
+  .overview-card{min-height:104px}
+  .portal{grid-template-columns:1fr}
+  .portal-nav{display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;gap:12px!important}
+}
+

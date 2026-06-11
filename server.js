@@ -35,5 +35,5 @@ http.createServer((req, res) => {
     res.end(data);
   });
 }).listen(port, "127.0.0.1", () => {
-  console.log(`SANSU HOSPITAL running at http://localhost:${port}`);
+  console.log(`VELORA HOSPITALS running at http://localhost:${port}`);
 });
