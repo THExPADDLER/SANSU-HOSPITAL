@@ -30,15 +30,47 @@
       </div>
       <div class="dashboard-grid">
         <article><h3>Today's appointments</h3><p>12 patients scheduled, 3 video consultations.</p><button>Start video consultation</button></article>
-        <article><h3>Clinical actions</h3><p>Accept, reject, reschedule, add prescription, upload notes and view history.</p><button>Add prescription</button></article>
+        <article><h3>Availability control</h3><p>Set separate OPD and video consultation days, time windows, and break periods.</p><button data-scroll-target="#scheduleEditor">Edit schedule</button></article>
         <article><h3>Patient details</h3><p>Secure patient profile, reports, vitals and consultation history.</p><button>View patient</button></article>
       </div>
+      <section class="schedule-editor form-card" id="scheduleEditor">
+        <div>
+          <span class="eyebrow">Doctor availability</span>
+          <h2>Set preferred consultation timing</h2>
+          <p>Patients should only see slots that you actively publish. OPD and video consultation can have different days and time windows.</p>
+        </div>
+        <form id="doctorScheduleForm">
+          <div class="form-grid">
+            <label>OPD days<select name="opdDays"><option>Mon-Sat</option><option>Mon, Wed, Fri</option><option>Tue, Thu, Sat</option><option>Custom</option></select></label>
+            <label>OPD time window<input name="opdTime" value="10:00 AM - 02:00 PM"></label>
+            <label>Video consultation<select name="videoEnabled"><option>Enabled</option><option>Disabled</option></select></label>
+            <label>Video days<select name="videoDays"><option>Tue, Thu</option><option>Mon, Wed</option><option>Saturday only</option><option>Custom</option></select></label>
+            <label>Video time window<input name="videoTime" value="06:00 PM - 07:00 PM"></label>
+            <label>Slot duration<select name="slotDuration"><option>15 minutes</option><option>20 minutes</option><option>30 minutes</option></select></label>
+            <label class="wide">Unavailable / break notes<textarea name="breakNotes" placeholder="Example: Not available this Friday after 1 PM"></textarea></label>
+          </div>
+          <div class="form-actions">
+            <button class="btn primary" type="submit"><i data-lucide="save"></i> Save Availability</button>
+            <button class="btn secondary" type="button" id="publishSchedule"><i data-lucide="radio"></i> Publish Slots</button>
+          </div>
+          <p class="success-msg">Availability saved. Patients will only see the published slots for each consultation type.</p>
+        </form>
+      </section>
       <div class="table-wrap portal-table">
         <table>
           <thead><tr><th>Patient</th><th>Time</th><th>Type</th><th>Status</th><th>Action</th></tr></thead>
           <tbody>
             <tr><td>Riya Sharma</td><td>11:30 AM</td><td>Video</td><td><span class="badge green">Confirmed</span></td><td><button>Open case</button></td></tr>
             <tr><td>Aarav Mishra</td><td>01:00 PM</td><td>Hospital Visit</td><td><span class="badge amber">Pending</span></td><td><button>Accept</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap portal-table">
+        <table>
+          <thead><tr><th>Consultation type</th><th>Published days</th><th>Published time</th><th>Visibility</th></tr></thead>
+          <tbody>
+            <tr><td>Hospital visit / OPD</td><td>Mon-Sat</td><td>10:00 AM - 02:00 PM</td><td><span class="badge green">Visible to patients</span></td></tr>
+            <tr><td>Video consultation</td><td>Tue, Thu</td><td>06:00 PM - 07:00 PM</td><td><span class="badge blue">Limited slots</span></td></tr>
           </tbody>
         </table>
       </div>

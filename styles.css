@@ -134,6 +134,19 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
 .portal-hero .section-head p{max-width:850px;font-size:17px}
 .portal-table{margin-top:20px}
 .portal-nav{position:static!important;display:flex!important;background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important}
+.schedule-editor{
+  display:grid;
+  grid-template-columns:.55fr 1fr;
+  gap:28px;
+  align-items:start;
+  margin-top:22px;
+}
+.schedule-editor h2{
+  font-size:clamp(26px,3vw,36px);
+}
+.schedule-editor form{
+  min-width:0;
+}
 .portal{display:grid;grid-template-columns:260px 1fr;min-height:310px;overflow:hidden}
 .portal aside{display:grid;align-content:start;gap:8px;padding:16px;background:#f4f9fc;border-right:1px solid var(--line)}
 .portal aside button,.table-wrap button,.dashboard-grid button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:11px 12px;font-weight:800;color:var(--navy);text-align:left;cursor:pointer}
@@ -306,6 +319,57 @@ h2{font-weight:800;font-size:clamp(30px,4vw,48px)}
 input,select,textarea{min-height:46px}
 .department-card img{height:168px}
 .doctor-card img{height:220px}
+.availability-grid{
+  display:grid;
+  gap:10px;
+  margin:14px 0;
+}
+.availability-grid span{
+  display:grid;
+  gap:4px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fffafa;
+  padding:10px 12px;
+  color:var(--navy);
+  font-weight:750;
+  line-height:1.35;
+}
+.availability-grid strong{
+  color:var(--navy-2);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+}
+.availability-grid small{
+  color:var(--muted);
+  font-weight:650;
+}
+.availability-grid .muted{
+  background:#fbf6f7;
+  color:#8f6b73;
+}
+.availability-note{
+  margin:0;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fff7f8;
+  color:var(--navy);
+  padding:12px 14px;
+  font-weight:750;
+}
+.availability-note.warning{
+  background:#fff1f3;
+  color:#9f1730;
+  border-color:#e8b8c1;
+}
+.btn.disabled,
+.btn:disabled{
+  opacity:.58;
+  cursor:not-allowed;
+  transform:none!important;
+  box-shadow:none;
+}
 
 .portal-hero{background:linear-gradient(145deg,#fff,#fff5f6 58%,#fbebee)}
 .portal{grid-template-columns:280px 1fr;min-height:330px}
@@ -329,5 +393,6 @@ input,select,textarea{min-height:46px}
   .overview-card{min-height:104px}
   .portal{grid-template-columns:1fr}
   .portal-nav{display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;gap:12px!important}
+  .schedule-editor{grid-template-columns:1fr}
 }
 

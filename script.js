@@ -20,14 +20,14 @@ const departments = [
 ];
 
 const doctors = [
-  ["Dr. Amit Sharma","General Medicine","12 years","MBBS, MD Medicine","Rs. 600","Mon-Sat","09:00 AM - 01:00 PM","4.8","https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=500&q=75"],
-  ["Dr. Priya Verma","Cardiology","10 years","MBBS, MD, DM Cardiology","Rs. 900","Mon-Fri","11:00 AM - 03:00 PM","4.9","https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=75"],
-  ["Dr. Rajesh Mehta","Orthopedics","15 years","MBBS, MS Orthopedics","Rs. 750","Mon-Sat","10:00 AM - 02:00 PM","4.7","https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500&q=75"],
-  ["Dr. Neha Singh","Gynecology","9 years","MBBS, MS Obs & Gyn","Rs. 700","Mon-Sat","12:00 PM - 04:00 PM","4.8","https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=500&q=75"],
-  ["Dr. Arjun Nair","Neurology","11 years","MBBS, MD, DM Neurology","Rs. 950","Tue-Sat","04:00 PM - 08:00 PM","4.8","https://images.unsplash.com/photo-1587560699334-bea93391dcef?auto=format&fit=crop&w=500&q=75"],
-  ["Dr. Kavita Rao","Pediatrics","8 years","MBBS, MD Pediatrics","Rs. 550","Mon-Sat","09:30 AM - 01:30 PM","4.9","https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=500&q=75"],
-  ["Dr. Sameer Khan","Gastroenterology","13 years","MBBS, MD, DM Gastro","Rs. 850","Mon-Fri","02:00 PM - 06:00 PM","4.7","https://images.unsplash.com/photo-1637059824899-a441006a6875?auto=format&fit=crop&w=500&q=75"],
-  ["Dr. Rohan Patel","Nephrology","10 years","MBBS, MD, DM Nephrology","Rs. 850","Tue-Sun","10:00 AM - 01:00 PM","4.8","https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=500&q=75"]
+  {name:"Dr. Amit Sharma", spec:"General Medicine", exp:"12 years", qual:"MBBS, MD Medicine", fee:"Rs. 600", rating:"4.8", img:"https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon-Sat", slots:["09:00 AM - 10:30 AM","10:30 AM - 12:00 PM","12:00 PM - 01:00 PM"]}, video:{days:"Tue, Thu", slots:["06:00 PM - 06:30 PM","06:30 PM - 07:00 PM"]}},
+  {name:"Dr. Priya Verma", spec:"Cardiology", exp:"10 years", qual:"MBBS, MD, DM Cardiology", fee:"Rs. 900", rating:"4.9", img:"https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon, Wed, Fri", slots:["11:00 AM - 12:00 PM","12:00 PM - 01:00 PM","02:00 PM - 03:00 PM"]}, video:{days:"Sat", slots:["05:00 PM - 05:30 PM","05:30 PM - 06:00 PM"]}},
+  {name:"Dr. Rajesh Mehta", spec:"Orthopedics", exp:"15 years", qual:"MBBS, MS Orthopedics", fee:"Rs. 750", rating:"4.7", img:"https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon-Sat", slots:["10:00 AM - 11:30 AM","11:30 AM - 01:00 PM","01:00 PM - 02:00 PM"]}, video:{days:"Not available", slots:[]}},
+  {name:"Dr. Neha Singh", spec:"Gynecology", exp:"9 years", qual:"MBBS, MS Obs & Gyn", fee:"Rs. 700", rating:"4.8", img:"https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon-Sat", slots:["12:00 PM - 01:00 PM","01:00 PM - 02:30 PM","02:30 PM - 04:00 PM"]}, video:{days:"Mon, Wed", slots:["07:00 PM - 07:30 PM"]}},
+  {name:"Dr. Arjun Nair", spec:"Neurology", exp:"11 years", qual:"MBBS, MD, DM Neurology", fee:"Rs. 950", rating:"4.8", img:"https://images.unsplash.com/photo-1587560699334-bea93391dcef?auto=format&fit=crop&w=500&q=75", opd:{days:"Tue-Sat", slots:["04:00 PM - 05:00 PM","05:00 PM - 06:30 PM","06:30 PM - 08:00 PM"]}, video:{days:"Fri", slots:["08:15 PM - 08:45 PM"]}},
+  {name:"Dr. Kavita Rao", spec:"Pediatrics", exp:"8 years", qual:"MBBS, MD Pediatrics", fee:"Rs. 550", rating:"4.9", img:"https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon-Sat", slots:["09:30 AM - 11:00 AM","11:00 AM - 12:30 PM","12:30 PM - 01:30 PM"]}, video:{days:"Tue, Thu, Sat", slots:["04:30 PM - 05:00 PM","05:00 PM - 05:30 PM"]}},
+  {name:"Dr. Sameer Khan", spec:"Gastroenterology", exp:"13 years", qual:"MBBS, MD, DM Gastro", fee:"Rs. 850", rating:"4.7", img:"https://images.unsplash.com/photo-1637059824899-a441006a6875?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon-Fri", slots:["02:00 PM - 03:30 PM","03:30 PM - 05:00 PM","05:00 PM - 06:00 PM"]}, video:{days:"Not available", slots:[]}},
+  {name:"Dr. Rohan Patel", spec:"Nephrology", exp:"10 years", qual:"MBBS, MD, DM Nephrology", fee:"Rs. 850", rating:"4.8", img:"https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=500&q=75", opd:{days:"Tue-Sun", slots:["10:00 AM - 11:00 AM","11:00 AM - 12:00 PM","12:00 PM - 01:00 PM"]}, video:{days:"Wed, Sun", slots:["06:00 PM - 06:30 PM"]}}
 ];
 
 const services = [
@@ -59,10 +59,61 @@ function fillSelects() {
   const docSelect = document.querySelector("#doctorSelect");
   const videoDoctor = document.querySelector("#videoDoctor");
   departments.forEach(([name]) => depSelect?.append(new Option(name, name)));
-  doctors.forEach(([name, spec]) => {
-    docSelect?.append(new Option(`${name} - ${spec}`, name));
-    videoDoctor?.append(new Option(`${name} - ${spec}`, name));
+  doctors.forEach(doctor => {
+    docSelect?.append(new Option(`${doctor.name} - ${doctor.spec}`, doctor.name));
+    if (doctor.video.slots.length) {
+      videoDoctor?.append(new Option(`${doctor.name} - ${doctor.spec} (${doctor.video.days})`, doctor.name));
+    }
   });
+  wireAppointmentAvailability();
+}
+
+function getSelectedDoctor() {
+  const selectedName = document.querySelector("#doctorSelect")?.value;
+  return doctors.find(doctor => doctor.name === selectedName) || doctors[0];
+}
+
+function setOptions(select, options, emptyLabel) {
+  if (!select) return;
+  select.innerHTML = "";
+  if (!options.length) {
+    select.append(new Option(emptyLabel, ""));
+    select.disabled = true;
+    return;
+  }
+  select.disabled = false;
+  options.forEach(option => select.append(new Option(option, option)));
+}
+
+function wireAppointmentAvailability() {
+  const docSelect = document.querySelector("#doctorSelect");
+  const typeSelect = document.querySelector('select[name="type"]');
+  const slotSelect = document.querySelector('select[name="slot"]');
+  const availabilityNote = document.querySelector("#availabilityNote");
+  const submitButton = document.querySelector('#appointmentForm button[type="submit"]');
+  if (!docSelect || !typeSelect || !slotSelect) return;
+
+  const updateSlots = () => {
+    const doctor = getSelectedDoctor();
+    const mode = typeSelect.value === "Video Consultation" ? "video" : "opd";
+    const schedule = doctor[mode];
+    setOptions(slotSelect, schedule.slots, "No slots available for this doctor");
+    if (submitButton) {
+      submitButton.disabled = !schedule.slots.length;
+      submitButton.classList.toggle("disabled", !schedule.slots.length);
+    }
+    if (availabilityNote) {
+      const label = mode === "video" ? "Video consultation" : "Hospital visit";
+      availabilityNote.textContent = schedule.slots.length
+        ? `${label}: ${schedule.days} | ${schedule.slots.join(", ")}`
+        : `${label}: not available for ${doctor.name}. Please choose hospital visit or another doctor.`;
+      availabilityNote.classList.toggle("warning", !schedule.slots.length);
+    }
+  };
+
+  docSelect.addEventListener("change", updateSlots);
+  typeSelect.addEventListener("change", updateSlots);
+  updateSlots();
 }
 
 function renderDepartments() {
@@ -85,14 +136,17 @@ function renderDepartments() {
 function renderDoctors() {
   const grid = document.querySelector("#doctorGrid");
   if (!grid) return;
-  grid.innerHTML = doctors.map(([name, spec, exp, qual, fee, days, slot, rating, img]) => `
+  grid.innerHTML = doctors.map(doctor => `
     <article class="doctor-card reveal">
-      <img loading="lazy" src="${img}" alt="${name}">
-      <h3>${name}</h3>
-      <p><strong>${spec}</strong><br>${exp} experience<br>${qual}</p>
-      <p class="fee">${fee}</p>
-      <div class="meta"><span>${days}</span><span>${slot}</span></div>
-      <div class="meta"><span class="rating">Star ${rating}</span><span>Verified</span></div>
+      <img loading="lazy" src="${doctor.img}" alt="${doctor.name}">
+      <h3>${doctor.name}</h3>
+      <p><strong>${doctor.spec}</strong><br>${doctor.exp} experience<br>${doctor.qual}</p>
+      <p class="fee">${doctor.fee}</p>
+      <div class="availability-grid">
+        <span><strong>Hospital visit</strong>${doctor.opd.days}<small>${doctor.opd.slots.join(" | ")}</small></span>
+        <span class="${doctor.video.slots.length ? "" : "muted"}"><strong>Video consult</strong>${doctor.video.days}<small>${doctor.video.slots.length ? doctor.video.slots.join(" | ") : "Doctor has not enabled video consultation"}</small></span>
+      </div>
+      <div class="meta"><span class="rating">Star ${doctor.rating}</span><span>${doctor.video.slots.length ? "Video available" : "OPD only"}</span></div>
       <a class="btn secondary" href="#appointment">Book Appointment</a>
     </article>
   `).join("");
@@ -119,6 +173,34 @@ function wireForms() {
       msg?.classList.add("show");
       form.scrollIntoView({behavior:"smooth", block:"center"});
     });
+  });
+}
+
+function wireScheduleEditor() {
+  document.querySelectorAll("[data-scroll-target]").forEach(button => {
+    button.addEventListener("click", () => {
+      document.querySelector(button.dataset.scrollTarget)?.scrollIntoView({behavior:"smooth", block:"start"});
+    });
+  });
+
+  const form = document.querySelector("#doctorScheduleForm");
+  const publish = document.querySelector("#publishSchedule");
+  if (!form) return;
+
+  const showScheduleSaved = text => {
+    const msg = form.querySelector(".success-msg");
+    if (!msg) return;
+    msg.textContent = text;
+    msg.classList.add("show");
+  };
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    showScheduleSaved("Availability saved. Patients will only see your published OPD and video slots.");
+  });
+
+  publish?.addEventListener("click", () => {
+    showScheduleSaved("Slots published. The booking form will now use these availability windows.");
   });
 }
 
@@ -337,6 +419,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderServices();
   fillSelects();
   wireForms();
+  wireScheduleEditor();
   wirePortal();
   wireHeader();
   wireCareOverview();
