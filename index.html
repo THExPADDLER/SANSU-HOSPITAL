@@ -120,7 +120,8 @@
           <label>Appointment type<select name="type"><option>Hospital Visit</option><option>Video Consultation</option></select></label>
           <label>Preferred date<input required type="date" name="date"></label>
           <label>Preferred time slot<select name="slot"><option>09:00 AM - 11:00 AM</option><option>11:30 AM - 01:30 PM</option><option>03:00 PM - 05:00 PM</option><option>06:00 PM - 08:00 PM</option></select></label>
-          <label>Payment amount<input readonly value="Rs. 199 booking charge"></label>
+          <label>Payment amount<input id="paymentAmount" name="paymentAmount" readonly value="Rs. 199 booking charge"></label>
+          <p class="availability-note wide" id="paymentPolicyNote">Hospital visits require a small booking charge. Video consultations require full doctor fee payment before the meeting link is unlocked.</p>
           <p class="availability-note wide" id="availabilityNote">Select a doctor to see available OPD and video consultation slots.</p>
           <label class="wide">Symptoms / health concern<textarea name="symptoms" placeholder="Briefly describe your concern"></textarea></label>
           <label class="wide">Upload previous report optional<input type="file" name="report" accept=".pdf,.jpg,.jpeg,.png"></label>
@@ -181,6 +182,8 @@
       </div>
       <form class="form-card compact reveal" id="videoForm">
         <label>Select doctor<select id="videoDoctor"></select></label>
+        <label>Consultation fee<input id="videoConsultFee" readonly value="Select doctor to view fee"></label>
+        <p class="availability-note" id="videoPolicyNote">Full consultation fee is required before the meeting link is generated.</p>
         <label>Concern<textarea placeholder="Tell the doctor what you need help with"></textarea></label>
         <label>Payment option<select><option>UPI</option><option>Card</option><option>Net banking</option></select></label>
         <button class="btn primary" type="submit"><i data-lucide="video"></i> Pay & Generate Link</button>

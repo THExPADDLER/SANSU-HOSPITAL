@@ -31,6 +31,9 @@
       <div class="admin-stats">
         <span><strong>128</strong> Appointments</span><span><strong>42</strong> Lab bookings</span><span><strong>31</strong> Pharmacy orders</span><span><strong>9</strong> Ambulance requests</span><span><strong>Rs. 86k</strong> Payments</span>
       </div>
+      <div class="admin-stats finance-stats">
+        <span><strong>Rs. 12.8k</strong> Booking charges</span><span><strong>Rs. 48.6k</strong> Video consults</span><span><strong>Rs. 6.2k</strong> Refunds</span><span><strong>Rs. 31.4k</strong> Doctor settlements</span>
+      </div>
       <div class="table-wrap">
         <table>
           <thead><tr><th>Module</th><th>Management actions</th><th>Status controls</th></tr></thead>
@@ -51,6 +54,28 @@
           <tbody id="adminAppointmentsBody">
             <tr><td>VEL-1001</td><td>Riya Sharma</td><td>Cardiology</td><td>Dr. Priya Verma</td><td>Video Consultation</td><td><span class="badge green">Confirmed</span></td><td><span class="badge blue">Paid</span></td></tr>
             <tr><td>VEL-1002</td><td>Aarav Mishra</td><td>General Medicine</td><td>Dr. Amit Sharma</td><td>Hospital Visit</td><td><span class="badge amber">Pending</span></td><td><span class="badge amber">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap portal-table">
+        <table>
+          <thead><tr><th>Finance module</th><th>Rule</th><th>Admin control</th></tr></thead>
+          <tbody>
+            <tr><td>Hospital visit booking</td><td>Small booking charge collected before appointment request is processed.</td><td>Collect, refund, generate invoice</td></tr>
+            <tr><td>Video consultation</td><td>Full doctor fee must be paid before meeting link is unlocked.</td><td>Verify payment, unlock link, process refund</td></tr>
+            <tr><td>Doctor fees</td><td>Doctors can set OPD and video fees; admin can review and override.</td><td>Approve, edit, audit history</td></tr>
+            <tr><td>Settlements</td><td>Doctor-wise payouts are calculated from completed paid consultations.</td><td>Pending, settled, disputed</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap portal-table">
+        <table>
+          <thead><tr><th>Lifecycle / policy</th><th>Professional rule</th><th>Status values</th></tr></thead>
+          <tbody>
+            <tr><td>Appointment lifecycle</td><td>Each appointment moves through a controlled status chain.</td><td>Requested, Payment Pending, Confirmed, Checked In, In Consultation, Completed</td></tr>
+            <tr><td>Cancellation</td><td>Patient cancellation before 6 hours can be refunded or rescheduled once.</td><td>Cancelled, Rescheduled</td></tr>
+            <tr><td>Doctor cancellation</td><td>Doctor cancellation triggers full refund or priority reschedule.</td><td>Refunded, Priority Reschedule</td></tr>
+            <tr><td>No-show</td><td>No-show can block refund depending on hospital policy.</td><td>No-show, Closed</td></tr>
           </tbody>
         </table>
       </div>

@@ -46,6 +46,8 @@
             <label>Video consultation<select name="videoEnabled"><option>Enabled</option><option>Disabled</option></select></label>
             <label>Video days<select name="videoDays"><option>Tue, Thu</option><option>Mon, Wed</option><option>Saturday only</option><option>Custom</option></select></label>
             <label>Video time window<input name="videoTime" value="06:00 PM - 07:00 PM"></label>
+            <label>OPD fee<input name="opdFee" type="number" min="0" value="900"></label>
+            <label>Video consultation fee<input name="videoFee" type="number" min="0" value="1200"></label>
             <label>Slot duration<select name="slotDuration"><option>15 minutes</option><option>20 minutes</option><option>30 minutes</option></select></label>
             <label class="wide">Unavailable / break notes<textarea name="breakNotes" placeholder="Example: Not available this Friday after 1 PM"></textarea></label>
           </div>
@@ -65,6 +67,25 @@
           </tbody>
         </table>
       </div>
+      <section class="schedule-editor form-card">
+        <div>
+          <span class="eyebrow">Clinical note</span>
+          <h2>Prescription after consultation</h2>
+          <p>Add diagnosis, medicines, dosage, lab tests and follow-up advice after the appointment is completed.</p>
+        </div>
+        <form id="prescriptionForm">
+          <div class="form-grid">
+            <label>Diagnosis<input placeholder="Diagnosis summary"></label>
+            <label>Follow-up date<input type="date"></label>
+            <label class="wide">Medicines and dosage<textarea placeholder="Medicine name, dosage, duration"></textarea></label>
+            <label class="wide">Lab tests / advice<textarea placeholder="Recommended tests or care advice"></textarea></label>
+          </div>
+          <div class="form-actions">
+            <button class="btn primary" type="submit"><i data-lucide="file-plus"></i> Save Prescription</button>
+          </div>
+          <p class="success-msg">Prescription saved and published to patient dashboard.</p>
+        </form>
+      </section>
       <div class="table-wrap portal-table">
         <table>
           <thead><tr><th>Consultation type</th><th>Published days</th><th>Published time</th><th>Visibility</th></tr></thead>
