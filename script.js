@@ -51,26 +51,119 @@ const careTour = [
 ];
 
 const tourCardMap = [0, 0, 2, 2, 2, 0, 3, 4, 3, 5, 5];
+const appointmentStoreKey = "veloraAppointments";
+const defaultAppointments = [
+  {id:"VEL-1001", patient:"Riya Sharma", phone:"+91 XXXXX XXXXX", email:"riya@example.com", department:"Cardiology", doctor:"Dr. Priya Verma", type:"Video Consultation", date:"Tomorrow", slot:"11:30 AM", symptoms:"Follow-up consultation", status:"Confirmed", payment:"Paid"},
+  {id:"VEL-1002", patient:"Aarav Mishra", phone:"+91 XXXXX XXXXX", email:"aarav@example.com", department:"General Medicine", doctor:"Dr. Amit Sharma", type:"Hospital Visit", date:"Friday", slot:"09:00 AM", symptoms:"Fever and weakness", status:"Pending", payment:"Pending"}
+];
 
 const iconTag = name => `<i data-lucide="${name.replace(/[A-Z]/g, (m, i) => i ? '-' + m.toLowerCase() : m.toLowerCase())}"></i>`;
+
+function loadAppointments() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(appointmentStoreKey) || "null");
+    return Array.isArray(stored) && stored.length ? stored : defaultAppointments;
+  } catch {
+    return defaultAppointments;
+  }
+}
+
+function saveAppointments(appointments) {
+  localStorage.setItem(appointmentStoreKey, JSON.stringify(appointments));
+}
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "\"": "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+function addAppointment(appointment) {
+  const appointments = loadAppointments();
+  appointments.unshift(appointment);
+  saveAppointments(appointments);
+  renderDashboardAppointments();
+}
+
+function badgeClass(value) {
+  if (value === "Confirmed") return "green";
+  if (value === "Paid") return "blue";
+  if (value === "Failed" || value === "Cancelled") return "amber";
+  return "amber";
+}
+
+function tableButtonForAppointment(appointment) {
+  if (appointment.type === "Video Consultation" && appointment.payment === "Paid") return "Join video";
+  if (appointment.payment !== "Paid") return "Pay fee";
+  return "View invoice";
+}
+
+function renderDashboardAppointments() {
+  const appointments = loadAppointments();
+  const patientBody = document.querySelector("#patientAppointmentsBody");
+  const doctorBody = document.querySelector("#doctorAppointmentsBody");
+  const adminBody = document.querySelector("#adminAppointmentsBody");
+
+  if (patientBody) {
+    patientBody.innerHTML = appointments.map(appointment => `
+      <tr><td>${escapeHtml(appointment.doctor)}</td><td>${escapeHtml(appointment.date)}, ${escapeHtml(appointment.slot)}</td><td><span class="badge ${badgeClass(appointment.status)}">${escapeHtml(appointment.status)}</span></td><td><span class="badge ${badgeClass(appointment.payment)}">${escapeHtml(appointment.payment)}</span></td><td><button>${escapeHtml(tableButtonForAppointment(appointment))}</button></td></tr>
+    `).join("");
+  }
+
+  if (doctorBody) {
+    doctorBody.innerHTML = appointments.slice(0, 8).map(appointment => `
+      <tr><td>${escapeHtml(appointment.patient)}</td><td>${escapeHtml(appointment.slot)}</td><td>${escapeHtml(appointment.type)}</td><td><span class="badge ${badgeClass(appointment.status)}">${escapeHtml(appointment.status)}</span></td><td><button>${appointment.status === "Pending" ? "Accept" : "Open case"}</button></td></tr>
+    `).join("");
+  }
+
+  if (adminBody) {
+    adminBody.innerHTML = appointments.map(appointment => `
+      <tr><td>${escapeHtml(appointment.id)}</td><td>${escapeHtml(appointment.patient)}</td><td>${escapeHtml(appointment.department)}</td><td>${escapeHtml(appointment.doctor)}</td><td>${escapeHtml(appointment.type)}</td><td><span class="badge ${badgeClass(appointment.status)}">${escapeHtml(appointment.status)}</span></td><td><span class="badge ${badgeClass(appointment.payment)}">${escapeHtml(appointment.payment)}</span></td></tr>
+    `).join("");
+  }
+}
 
 function fillSelects() {
   const depSelect = document.querySelector("#departmentSelect");
   const docSelect = document.querySelector("#doctorSelect");
   const videoDoctor = document.querySelector("#videoDoctor");
   departments.forEach(([name]) => depSelect?.append(new Option(name, name)));
-  doctors.forEach(doctor => {
-    docSelect?.append(new Option(`${doctor.name} - ${doctor.spec}`, doctor.name));
-    if (doctor.video.slots.length) {
-      videoDoctor?.append(new Option(`${doctor.name} - ${doctor.spec} (${doctor.video.days})`, doctor.name));
-    }
+  populateDoctorSelect();
+  doctors.filter(doctor => doctor.video.slots.length).forEach(doctor => {
+    videoDoctor?.append(new Option(`${doctor.name} - ${doctor.spec} (${doctor.video.days})`, doctor.name));
   });
+  depSelect?.addEventListener("change", populateDoctorSelect);
   wireAppointmentAvailability();
+}
+
+function getDoctorsForSelectedDepartment() {
+  const selectedDepartment = document.querySelector("#departmentSelect")?.value;
+  const filteredDoctors = doctors.filter(doctor => doctor.spec === selectedDepartment);
+  return filteredDoctors.length ? filteredDoctors : [];
+}
+
+function populateDoctorSelect() {
+  const docSelect = document.querySelector("#doctorSelect");
+  if (!docSelect) return;
+  const filteredDoctors = getDoctorsForSelectedDepartment();
+  docSelect.innerHTML = "";
+  if (!filteredDoctors.length) {
+    docSelect.append(new Option("No doctor configured for this department", ""));
+    docSelect.disabled = true;
+  } else {
+    docSelect.disabled = false;
+    filteredDoctors.forEach(doctor => docSelect.append(new Option(`${doctor.name} - ${doctor.spec}`, doctor.name)));
+  }
+  docSelect.dispatchEvent(new Event("change", { bubbles: true }));
 }
 
 function getSelectedDoctor() {
   const selectedName = document.querySelector("#doctorSelect")?.value;
-  return doctors.find(doctor => doctor.name === selectedName) || doctors[0];
+  return doctors.find(doctor => doctor.name === selectedName) || null;
 }
 
 function setOptions(select, options, emptyLabel) {
@@ -95,6 +188,18 @@ function wireAppointmentAvailability() {
 
   const updateSlots = () => {
     const doctor = getSelectedDoctor();
+    if (!doctor) {
+      setOptions(slotSelect, [], "No doctor configured for this department");
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.classList.add("disabled");
+      }
+      if (availabilityNote) {
+        availabilityNote.textContent = "No doctor is currently configured for the selected department. Please choose another department.";
+        availabilityNote.classList.add("warning");
+      }
+      return;
+    }
     const mode = typeSelect.value === "Video Consultation" ? "video" : "opd";
     const schedule = doctor[mode];
     setOptions(slotSelect, schedule.slots, "No slots available for this doctor");
@@ -169,6 +274,24 @@ function wireForms() {
   document.querySelectorAll("form").forEach(form => {
     form.addEventListener("submit", event => {
       event.preventDefault();
+      if (form.id === "appointmentForm") {
+        const data = new FormData(form);
+        const payment = payBtn?.textContent.includes("Paid") ? "Paid" : "Pending";
+        addAppointment({
+          id: `VEL-${Date.now().toString().slice(-6)}`,
+          patient: data.get("name") || "New Patient",
+          phone: data.get("phone") || "",
+          email: data.get("email") || "",
+          department: data.get("department") || "",
+          doctor: data.get("doctor") || "",
+          type: data.get("type") || "Hospital Visit",
+          date: data.get("date") || "Preferred date pending",
+          slot: data.get("slot") || "Slot pending",
+          symptoms: data.get("symptoms") || "",
+          status: "Pending",
+          payment
+        });
+      }
       const msg = form.querySelector(".success-msg");
       msg?.classList.add("show");
       form.scrollIntoView({behavior:"smooth", block:"center"});
@@ -418,6 +541,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderDoctors();
   renderServices();
   fillSelects();
+  renderDashboardAppointments();
   wireForms();
   wireScheduleEditor();
   wirePortal();
