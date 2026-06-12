@@ -19,6 +19,7 @@
       <a href="/">Home</a>
       <a href="/patient">Patient</a>
       <a href="/doctor">Doctor</a>
+      <a href="/invoice">Invoice</a>
     </nav>
   </header>
   <main>
@@ -50,10 +51,10 @@
       </div>
       <div class="table-wrap portal-table">
         <table>
-          <thead><tr><th>Appointment ID</th><th>Patient</th><th>Department</th><th>Doctor</th><th>Type</th><th>Status</th><th>Payment</th></tr></thead>
+          <thead><tr><th>Appointment ID</th><th>Patient</th><th>Department</th><th>Doctor</th><th>Type</th><th>Status</th><th>Payment</th><th>Invoice</th></tr></thead>
           <tbody id="adminAppointmentsBody">
-            <tr><td>VEL-1001</td><td>Riya Sharma</td><td>Cardiology</td><td>Dr. Priya Verma</td><td>Video Consultation</td><td><span class="badge green">Confirmed</span></td><td><span class="badge blue">Paid</span></td></tr>
-            <tr><td>VEL-1002</td><td>Aarav Mishra</td><td>General Medicine</td><td>Dr. Amit Sharma</td><td>Hospital Visit</td><td><span class="badge amber">Pending</span></td><td><span class="badge amber">Pending</span></td></tr>
+            <tr><td>VEL-1001</td><td>Riya Sharma</td><td>Cardiology</td><td>Dr. Priya Verma</td><td>Video Consultation</td><td><span class="badge green">Confirmed</span></td><td><span class="badge blue">Paid</span></td><td><a class="table-link" href="/invoice?id=VEL-1001">Generate</a></td></tr>
+            <tr><td>VEL-1002</td><td>Aarav Mishra</td><td>General Medicine</td><td>Dr. Amit Sharma</td><td>Hospital Visit</td><td><span class="badge amber">Pending</span></td><td><span class="badge amber">Pending</span></td><td><a class="table-link" href="/invoice?id=VEL-1002">Generate</a></td></tr>
           </tbody>
         </table>
       </div>

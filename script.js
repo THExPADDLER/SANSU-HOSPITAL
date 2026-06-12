@@ -113,6 +113,159 @@ function tableButtonForAppointment(appointment) {
   return "View invoice";
 }
 
+function invoiceUrl(appointment) {
+  return `/invoice?id=${encodeURIComponent(appointment.id)}`;
+}
+
+function appointmentActionHtml(appointment) {
+  const primaryLabel = tableButtonForAppointment(appointment);
+  const primaryIcon = primaryLabel.includes("Join") ? "Video" : primaryLabel.includes("Pay") ? "CreditCard" : "ReceiptText";
+  return `
+    <div class="table-actions">
+      <button type="button">${iconTag(primaryIcon)} ${escapeHtml(primaryLabel)}</button>
+      <a class="table-link" href="${invoiceUrl(appointment)}">${iconTag("ReceiptText")} Invoice</a>
+    </div>
+  `;
+}
+
+function invoiceNumber(appointment) {
+  return `VH-INV-${String(appointment.id || "1000").replace(/\D/g, "") || "1000"}`;
+}
+
+function transactionId(appointment) {
+  return `VELPAY-${String(appointment.id || "1000").replace(/\D/g, "") || "1000"}-${appointment.payment === "Paid" ? "OK" : "PND"}`;
+}
+
+function findAppointmentById(id) {
+  const appointments = loadAppointments();
+  return appointments.find(appointment => appointment.id === id) || appointments[0] || defaultAppointments[0];
+}
+
+function invoiceLineItem(appointment) {
+  const amount = Number(appointment.amount || 0);
+  if (appointment.type === "Video Consultation") {
+    return {
+      item: "Video consultation fee",
+      description: `${appointment.doctor} - full online consultation charge`,
+      amount
+    };
+  }
+  return {
+    item: "Appointment booking charge",
+    description: `${appointment.doctor} - hospital visit request processing`,
+    amount
+  };
+}
+
+function renderInvoicePage() {
+  const invoiceRoot = document.querySelector("#invoiceRoot");
+  if (!invoiceRoot) return;
+  const params = new URLSearchParams(window.location.search);
+  const appointment = findAppointmentById(params.get("id"));
+  const lineItem = invoiceLineItem(appointment);
+  const total = Number(lineItem.amount || 0);
+  const paidAmount = appointment.payment === "Paid" ? total : 0;
+  const dueAmount = Math.max(total - paidAmount, 0);
+  const generatedDate = new Date().toLocaleDateString("en-IN", {day:"2-digit", month:"short", year:"numeric"});
+  const statusClass = badgeClass(appointment.payment);
+
+  invoiceRoot.innerHTML = `
+    <section class="invoice-toolbar no-print">
+      <a class="table-link" href="/patient">${iconTag("ArrowLeft")} Patient dashboard</a>
+      <div>
+        <button type="button" id="printInvoice">${iconTag("Printer")} Print</button>
+        <button type="button" id="downloadInvoice">${iconTag("Download")} Download PDF</button>
+      </div>
+    </section>
+    <article class="invoice-card">
+      <header class="invoice-top">
+        <div class="invoice-brand">
+          <span class="brand-mark"><i data-lucide="cross"></i></span>
+          <div>
+            <strong>VELORA HOSPITALS</strong>
+            <small>Care Beyond Boundaries</small>
+          </div>
+        </div>
+        <div class="invoice-title">
+          <span class="eyebrow">Payment receipt</span>
+          <h1>Tax Invoice</h1>
+          <span class="badge ${statusClass}">${escapeHtml(appointment.payment)}</span>
+        </div>
+      </header>
+
+      <div class="invoice-meta">
+        <span><strong>Invoice No.</strong>${escapeHtml(invoiceNumber(appointment))}</span>
+        <span><strong>Appointment ID</strong>${escapeHtml(appointment.id)}</span>
+        <span><strong>Issue Date</strong>${escapeHtml(generatedDate)}</span>
+        <span><strong>Payment Status</strong>${escapeHtml(appointment.payment)}</span>
+      </div>
+
+      <div class="invoice-parties">
+        <section>
+          <span class="eyebrow">Billed by</span>
+          <h3>Velora Hospitals</h3>
+          <p>Bhopal, Madhya Pradesh</p>
+          <p>Emergency: +91 XXXXX XXXXX</p>
+          <p>Email: info@velorahospitals.com</p>
+        </section>
+        <section>
+          <span class="eyebrow">Bill to</span>
+          <h3>${escapeHtml(appointment.patient)}</h3>
+          <p>${escapeHtml(appointment.phone || "+91 XXXXX XXXXX")}</p>
+          <p>${escapeHtml(appointment.email || "patient@example.com")}</p>
+          <p>${escapeHtml(appointment.department)} Department</p>
+        </section>
+      </div>
+
+      <section class="invoice-care-summary">
+        <div><strong>Doctor</strong><span>${escapeHtml(appointment.doctor)}</span></div>
+        <div><strong>Consultation</strong><span>${escapeHtml(appointment.type)}</span></div>
+        <div><strong>Date / Slot</strong><span>${escapeHtml(appointment.date)}, ${escapeHtml(appointment.slot)}</span></div>
+        <div><strong>Clinical note</strong><span>${escapeHtml(appointment.symptoms || "Appointment booking")}</span></div>
+      </section>
+
+      <div class="invoice-table-wrap">
+        <table class="invoice-table">
+          <thead><tr><th>Service</th><th>Description</th><th>Qty</th><th>Amount</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>${escapeHtml(lineItem.item)}</td>
+              <td>${escapeHtml(lineItem.description)}</td>
+              <td>1</td>
+              <td>${escapeHtml(formatCurrency(total))}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="invoice-bottom">
+        <section class="payment-box">
+          <span class="eyebrow">Payment information</span>
+          <p><strong>Mode:</strong> Online payment</p>
+          <p><strong>Transaction ID:</strong> ${escapeHtml(transactionId(appointment))}</p>
+          <p><strong>Policy:</strong> Video consultation unlocks only after full doctor fee payment. Hospital visit bookings use a small appointment charge.</p>
+        </section>
+        <section class="invoice-totals">
+          <div><span>Subtotal</span><strong>${escapeHtml(formatCurrency(total))}</strong></div>
+          <div><span>Discount</span><strong>${escapeHtml(formatCurrency(0))}</strong></div>
+          <div><span>Paid</span><strong>${escapeHtml(formatCurrency(paidAmount))}</strong></div>
+          <div><span>Balance due</span><strong>${escapeHtml(formatCurrency(dueAmount))}</strong></div>
+          <div class="grand-total"><span>Total</span><strong>${escapeHtml(formatCurrency(total))}</strong></div>
+        </section>
+      </div>
+
+      <footer class="invoice-footer">
+        <p>This is a computer-generated receipt from Velora Hospitals. Please carry this invoice and appointment ID for billing desk verification.</p>
+        <span>Authorized billing desk</span>
+      </footer>
+    </article>
+  `;
+
+  document.querySelector("#printInvoice")?.addEventListener("click", () => window.print());
+  document.querySelector("#downloadInvoice")?.addEventListener("click", () => window.print());
+  if (window.lucide) lucide.createIcons();
+}
+
 function renderDashboardAppointments() {
   const appointments = loadAppointments();
   const patientBody = document.querySelector("#patientAppointmentsBody");
@@ -121,7 +274,7 @@ function renderDashboardAppointments() {
 
   if (patientBody) {
     patientBody.innerHTML = appointments.map(appointment => `
-      <tr><td>${escapeHtml(appointment.doctor)}</td><td>${escapeHtml(appointment.date)}, ${escapeHtml(appointment.slot)}</td><td><span class="badge ${badgeClass(appointment.status)}">${escapeHtml(appointment.status)}</span></td><td><span class="badge ${badgeClass(appointment.payment)}">${escapeHtml(appointment.payment)} ${escapeHtml(formatCurrency(appointment.amount))}</span></td><td><button>${escapeHtml(tableButtonForAppointment(appointment))}</button></td></tr>
+      <tr><td>${escapeHtml(appointment.doctor)}</td><td>${escapeHtml(appointment.date)}, ${escapeHtml(appointment.slot)}</td><td><span class="badge ${badgeClass(appointment.status)}">${escapeHtml(appointment.status)}</span></td><td><span class="badge ${badgeClass(appointment.payment)}">${escapeHtml(appointment.payment)} ${escapeHtml(formatCurrency(appointment.amount))}</span></td><td>${appointmentActionHtml(appointment)}</td></tr>
     `).join("");
   }
 
@@ -133,7 +286,7 @@ function renderDashboardAppointments() {
 
   if (adminBody) {
     adminBody.innerHTML = appointments.map(appointment => `
-      <tr><td>${escapeHtml(appointment.id)}</td><td>${escapeHtml(appointment.patient)}</td><td>${escapeHtml(appointment.department)}</td><td>${escapeHtml(appointment.doctor)}</td><td>${escapeHtml(appointment.type)}</td><td><span class="badge ${badgeClass(appointment.status)}">${escapeHtml(appointment.status)}</span></td><td><span class="badge ${badgeClass(appointment.payment)}">${escapeHtml(appointment.payment)} ${escapeHtml(formatCurrency(appointment.amount))}</span></td></tr>
+      <tr><td>${escapeHtml(appointment.id)}</td><td>${escapeHtml(appointment.patient)}</td><td>${escapeHtml(appointment.department)}</td><td>${escapeHtml(appointment.doctor)}</td><td>${escapeHtml(appointment.type)}</td><td><span class="badge ${badgeClass(appointment.status)}">${escapeHtml(appointment.status)}</span></td><td><span class="badge ${badgeClass(appointment.payment)}">${escapeHtml(appointment.payment)} ${escapeHtml(formatCurrency(appointment.amount))}</span></td><td><a class="table-link" href="${invoiceUrl(appointment)}">${iconTag("ReceiptText")} Generate</a></td></tr>
     `).join("");
   }
 }
@@ -622,6 +775,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderServices();
   fillSelects();
   renderDashboardAppointments();
+  renderInvoicePage();
   wireForms();
   wireScheduleEditor();
   wirePortal();
