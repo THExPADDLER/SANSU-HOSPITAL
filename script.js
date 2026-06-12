@@ -20,14 +20,14 @@ const departments = [
 ];
 
 const doctors = [
-  {name:"Dr. Amit Sharma", spec:"General Medicine", exp:"12 years", qual:"MBBS, MD Medicine", opdFee:600, videoFee:800, rating:"4.8", img:"https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon-Sat", slots:["09:00 AM - 10:30 AM","10:30 AM - 12:00 PM","12:00 PM - 01:00 PM"]}, video:{days:"Tue, Thu", slots:["06:00 PM - 06:30 PM","06:30 PM - 07:00 PM"]}},
-  {name:"Dr. Priya Verma", spec:"Cardiology", exp:"10 years", qual:"MBBS, MD, DM Cardiology", opdFee:900, videoFee:1200, rating:"4.9", img:"https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon, Wed, Fri", slots:["11:00 AM - 12:00 PM","12:00 PM - 01:00 PM","02:00 PM - 03:00 PM"]}, video:{days:"Sat", slots:["05:00 PM - 05:30 PM","05:30 PM - 06:00 PM"]}},
-  {name:"Dr. Rajesh Mehta", spec:"Orthopedics", exp:"15 years", qual:"MBBS, MS Orthopedics", opdFee:750, videoFee:0, rating:"4.7", img:"https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon-Sat", slots:["10:00 AM - 11:30 AM","11:30 AM - 01:00 PM","01:00 PM - 02:00 PM"]}, video:{days:"Not available", slots:[]}},
-  {name:"Dr. Neha Singh", spec:"Gynecology", exp:"9 years", qual:"MBBS, MS Obs & Gyn", opdFee:700, videoFee:950, rating:"4.8", img:"https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon-Sat", slots:["12:00 PM - 01:00 PM","01:00 PM - 02:30 PM","02:30 PM - 04:00 PM"]}, video:{days:"Mon, Wed", slots:["07:00 PM - 07:30 PM"]}},
-  {name:"Dr. Arjun Nair", spec:"Neurology", exp:"11 years", qual:"MBBS, MD, DM Neurology", opdFee:950, videoFee:1400, rating:"4.8", img:"https://images.unsplash.com/photo-1587560699334-bea93391dcef?auto=format&fit=crop&w=500&q=75", opd:{days:"Tue-Sat", slots:["04:00 PM - 05:00 PM","05:00 PM - 06:30 PM","06:30 PM - 08:00 PM"]}, video:{days:"Fri", slots:["08:15 PM - 08:45 PM"]}},
-  {name:"Dr. Kavita Rao", spec:"Pediatrics", exp:"8 years", qual:"MBBS, MD Pediatrics", opdFee:550, videoFee:750, rating:"4.9", img:"https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon-Sat", slots:["09:30 AM - 11:00 AM","11:00 AM - 12:30 PM","12:30 PM - 01:30 PM"]}, video:{days:"Tue, Thu, Sat", slots:["04:30 PM - 05:00 PM","05:00 PM - 05:30 PM"]}},
-  {name:"Dr. Sameer Khan", spec:"Gastroenterology", exp:"13 years", qual:"MBBS, MD, DM Gastro", opdFee:850, videoFee:0, rating:"4.7", img:"https://images.unsplash.com/photo-1637059824899-a441006a6875?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon-Fri", slots:["02:00 PM - 03:30 PM","03:30 PM - 05:00 PM","05:00 PM - 06:00 PM"]}, video:{days:"Not available", slots:[]}},
-  {name:"Dr. Rohan Patel", spec:"Nephrology", exp:"10 years", qual:"MBBS, MD, DM Nephrology", opdFee:850, videoFee:1100, rating:"4.8", img:"https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=500&q=75", opd:{days:"Tue-Sun", slots:["10:00 AM - 11:00 AM","11:00 AM - 12:00 PM","12:00 PM - 01:00 PM"]}, video:{days:"Wed, Sun", slots:["06:00 PM - 06:30 PM"]}}
+  {name:"Dr. Amit Sharma", spec:"General Medicine", exp:"12 years", qual:"MBBS, MD Medicine", rating:"4.8", img:"https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon-Sat", slots:["09:00 AM - 10:30 AM","10:30 AM - 12:00 PM","12:00 PM - 01:00 PM"]}, video:{days:"Tue, Thu", slots:["06:00 PM - 06:30 PM","06:30 PM - 07:00 PM"]}},
+  {name:"Dr. Priya Verma", spec:"Cardiology", exp:"10 years", qual:"MBBS, MD, DM Cardiology", rating:"4.9", img:"https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon, Wed, Fri", slots:["11:00 AM - 12:00 PM","12:00 PM - 01:00 PM","02:00 PM - 03:00 PM"]}, video:{days:"Sat", slots:["05:00 PM - 05:30 PM","05:30 PM - 06:00 PM"]}},
+  {name:"Dr. Rajesh Mehta", spec:"Orthopedics", exp:"15 years", qual:"MBBS, MS Orthopedics", rating:"4.7", img:"https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon-Sat", slots:["10:00 AM - 11:30 AM","11:30 AM - 01:00 PM","01:00 PM - 02:00 PM"]}, video:{days:"Not available", slots:[]}},
+  {name:"Dr. Neha Singh", spec:"Gynecology", exp:"9 years", qual:"MBBS, MS Obs & Gyn", rating:"4.8", img:"https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon-Sat", slots:["12:00 PM - 01:00 PM","01:00 PM - 02:30 PM","02:30 PM - 04:00 PM"]}, video:{days:"Mon, Wed", slots:["07:00 PM - 07:30 PM"]}},
+  {name:"Dr. Arjun Nair", spec:"Neurology", exp:"11 years", qual:"MBBS, MD, DM Neurology", rating:"4.8", img:"https://images.unsplash.com/photo-1587560699334-bea93391dcef?auto=format&fit=crop&w=500&q=75", opd:{days:"Tue-Sat", slots:["04:00 PM - 05:00 PM","05:00 PM - 06:30 PM","06:30 PM - 08:00 PM"]}, video:{days:"Fri", slots:["08:15 PM - 08:45 PM"]}},
+  {name:"Dr. Kavita Rao", spec:"Pediatrics", exp:"8 years", qual:"MBBS, MD Pediatrics", rating:"4.9", img:"https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon-Sat", slots:["09:30 AM - 11:00 AM","11:00 AM - 12:30 PM","12:30 PM - 01:30 PM"]}, video:{days:"Tue, Thu, Sat", slots:["04:30 PM - 05:00 PM","05:00 PM - 05:30 PM"]}},
+  {name:"Dr. Sameer Khan", spec:"Gastroenterology", exp:"13 years", qual:"MBBS, MD, DM Gastro", rating:"4.7", img:"https://images.unsplash.com/photo-1637059824899-a441006a6875?auto=format&fit=crop&w=500&q=75", opd:{days:"Mon-Fri", slots:["02:00 PM - 03:30 PM","03:30 PM - 05:00 PM","05:00 PM - 06:00 PM"]}, video:{days:"Not available", slots:[]}},
+  {name:"Dr. Rohan Patel", spec:"Nephrology", exp:"10 years", qual:"MBBS, MD, DM Nephrology", rating:"4.8", img:"https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=500&q=75", opd:{days:"Tue-Sun", slots:["10:00 AM - 11:00 AM","11:00 AM - 12:00 PM","12:00 PM - 01:00 PM"]}, video:{days:"Wed, Sun", slots:["06:00 PM - 06:30 PM"]}}
 ];
 
 const services = [
@@ -40,8 +40,8 @@ const careTour = [
   ["#home","Care Beyond Boundaries","A premium connected-care front door for emergency, OPD, diagnostics, pharmacy and virtual consultation.","Velora Care Desk","Clinical access, service coordination and support in one place"],
   ["#appointment","Appointment Desk","Patient details, doctor selection, visit type, report upload and booking payment are kept clear and efficient.","Booking Coordination","Doctor slots, payment status and requests stay aligned"],
   ["#departments","Clinical Departments","Eighteen specialties are organized for quick scanning, clear decisions and direct booking.","Specialty Network","Patients move to the right clinical team without friction"],
-  ["#doctors","Doctor Discovery","Doctor cards show fee, experience, schedule, rating and consultation action without visual clutter.","Doctor Finder","Specialists are ready for hospital visits or video consults"],
-  ["#video","Virtual OPD","Patients select a doctor, pay the consultation fee and receive a meeting link from their portal.","Virtual Consultation","Remote care is connected to records and follow-up"],
+  ["#doctors","Doctor Discovery","Doctor cards show admin-set charges, experience, schedule, rating and consultation action without visual clutter.","Doctor Finder","Specialists are ready for hospital visits or video consults"],
+  ["#video","Virtual OPD","Patients select a doctor, pay the admin-defined charge and receive a meeting link from their portal.","Virtual Consultation","Remote care is connected to records and follow-up"],
   ["#ambulance","Emergency Dispatch","Pickup, drop, emergency type, condition and timing are captured for response coordination.","Emergency Desk","Ambulance requests route to the rapid response desk"],
   ["#lab","Diagnostics","Tests, prescription upload, collection address and online payment are grouped into a clean booking flow.","Diagnostics Flow","Lab bookings connect to patient reports"],
   ["#pharmacy","Pharmacy Orders","Prescription upload, medicine quantity, delivery address, payment and tracking stay practical.","Medicine Delivery","Orders move from verification to delivery tracking"],
@@ -52,10 +52,28 @@ const careTour = [
 
 const tourCardMap = [0, 0, 2, 2, 2, 0, 3, 4, 3, 5, 5];
 const appointmentStoreKey = "veloraAppointments";
-const bookingCharge = 199;
+const pricingStoreKey = "veloraHospitalPricing";
+const defaultHospitalPricing = {
+  gateway: "Razorpay",
+  currency: "INR",
+  bookingCharge: 199,
+  ambulanceBase: 1200,
+  labHomeCollection: 149,
+  pharmacyDelivery: 59,
+  doctors: {
+    "Dr. Amit Sharma": {opd:600, video:800},
+    "Dr. Priya Verma": {opd:900, video:1200},
+    "Dr. Rajesh Mehta": {opd:750, video:0},
+    "Dr. Neha Singh": {opd:700, video:950},
+    "Dr. Arjun Nair": {opd:950, video:1400},
+    "Dr. Kavita Rao": {opd:550, video:750},
+    "Dr. Sameer Khan": {opd:850, video:0},
+    "Dr. Rohan Patel": {opd:850, video:1100}
+  }
+};
 const defaultAppointments = [
-  {id:"VEL-1001", patient:"Riya Sharma", phone:"+91 XXXXX XXXXX", email:"riya@example.com", department:"Cardiology", doctor:"Dr. Priya Verma", type:"Video Consultation", date:"Tomorrow", slot:"11:30 AM", symptoms:"Follow-up consultation", status:"Confirmed", payment:"Paid", amount:1200, meetingUnlocked:true},
-  {id:"VEL-1002", patient:"Aarav Mishra", phone:"+91 XXXXX XXXXX", email:"aarav@example.com", department:"General Medicine", doctor:"Dr. Amit Sharma", type:"Hospital Visit", date:"Friday", slot:"09:00 AM", symptoms:"Fever and weakness", status:"Payment Pending", payment:"Pending", amount:199, meetingUnlocked:false}
+  {id:"VEL-1001", patient:"Riya Sharma", phone:"+91 XXXXX XXXXX", email:"riya@example.com", department:"Cardiology", doctor:"Dr. Priya Verma", type:"Video Consultation", date:"Tomorrow", slot:"11:30 AM", symptoms:"Follow-up consultation", status:"Confirmed", payment:"Paid", amount:1200, gateway:"Razorpay", razorpayPaymentId:"pay_VEL1001OK", razorpayOrderId:"order_VEL1001", meetingUnlocked:true},
+  {id:"VEL-1002", patient:"Aarav Mishra", phone:"+91 XXXXX XXXXX", email:"aarav@example.com", department:"General Medicine", doctor:"Dr. Amit Sharma", type:"Hospital Visit", date:"Friday", slot:"09:00 AM", symptoms:"Fever and weakness", status:"Payment Pending", payment:"Pending", amount:199, gateway:"Razorpay", razorpayOrderId:"order_VEL1002", meetingUnlocked:false}
 ];
 
 const iconTag = name => `<i data-lucide="${name.replace(/[A-Z]/g, (m, i) => i ? '-' + m.toLowerCase() : m.toLowerCase())}"></i>`;
@@ -64,9 +82,32 @@ function formatCurrency(amount) {
   return `Rs. ${Number(amount || 0).toLocaleString("en-IN")}`;
 }
 
+function loadHospitalPricing() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(pricingStoreKey) || "null");
+    return stored ? {...defaultHospitalPricing, ...stored, doctors:{...defaultHospitalPricing.doctors, ...(stored.doctors || {})}} : defaultHospitalPricing;
+  } catch {
+    return defaultHospitalPricing;
+  }
+}
+
+function saveHospitalPricing(pricing) {
+  localStorage.setItem(pricingStoreKey, JSON.stringify(pricing));
+}
+
+function doctorPricing(doctor) {
+  const name = typeof doctor === "string" ? doctor : doctor?.name;
+  return loadHospitalPricing().doctors[name] || {opd:0, video:0};
+}
+
+function bookingCharge() {
+  return Number(loadHospitalPricing().bookingCharge || defaultHospitalPricing.bookingCharge);
+}
+
 function appointmentAmount(doctor, type) {
   if (!doctor) return 0;
-  return type === "Video Consultation" ? doctor.videoFee : bookingCharge;
+  const pricing = doctorPricing(doctor);
+  return type === "Video Consultation" ? Number(pricing.video || 0) : bookingCharge();
 }
 
 function loadAppointments() {
@@ -108,8 +149,8 @@ function badgeClass(value) {
 
 function tableButtonForAppointment(appointment) {
   if (appointment.type === "Video Consultation" && appointment.payment === "Paid") return "Join video";
-  if (appointment.type === "Video Consultation") return "Pay full fee";
-  if (appointment.payment !== "Paid") return "Pay fee";
+  if (appointment.type === "Video Consultation") return "Pay full charge";
+  if (appointment.payment !== "Paid") return "Pay charge";
   return "View invoice";
 }
 
@@ -133,7 +174,8 @@ function invoiceNumber(appointment) {
 }
 
 function transactionId(appointment) {
-  return `VELPAY-${String(appointment.id || "1000").replace(/\D/g, "") || "1000"}-${appointment.payment === "Paid" ? "OK" : "PND"}`;
+  if (appointment.razorpayPaymentId) return appointment.razorpayPaymentId;
+  return `pay_${String(appointment.id || "1000").replace(/\D/g, "") || "1000"}_${appointment.payment === "Paid" ? "paid" : "pending"}`;
 }
 
 function findAppointmentById(id) {
@@ -145,7 +187,7 @@ function invoiceLineItem(appointment) {
   const amount = Number(appointment.amount || 0);
   if (appointment.type === "Video Consultation") {
     return {
-      item: "Video consultation fee",
+      item: "Video consultation charge",
       description: `${appointment.doctor} - full online consultation charge`,
       amount
     };
@@ -241,9 +283,10 @@ function renderInvoicePage() {
       <div class="invoice-bottom">
         <section class="payment-box">
           <span class="eyebrow">Payment information</span>
-          <p><strong>Mode:</strong> Online payment</p>
-          <p><strong>Transaction ID:</strong> ${escapeHtml(transactionId(appointment))}</p>
-          <p><strong>Policy:</strong> Video consultation unlocks only after full doctor fee payment. Hospital visit bookings use a small appointment charge.</p>
+          <p><strong>Gateway:</strong> ${escapeHtml(appointment.gateway || "Razorpay")}</p>
+          <p><strong>Razorpay payment ID:</strong> ${escapeHtml(transactionId(appointment))}</p>
+          <p><strong>Razorpay order ID:</strong> ${escapeHtml(appointment.razorpayOrderId || "Created after checkout")}</p>
+          <p><strong>Policy:</strong> All service charges are set by hospital admin. Video consultation unlocks only after verified Razorpay payment.</p>
         </section>
         <section class="invoice-totals">
           <div><span>Subtotal</span><strong>${escapeHtml(formatCurrency(total))}</strong></div>
@@ -291,13 +334,80 @@ function renderDashboardAppointments() {
   }
 }
 
+function renderAdminPricing() {
+  const table = document.querySelector("#adminPricingTable");
+  const doctorSelect = document.querySelector("#adminPricingDoctor");
+  const pricing = loadHospitalPricing();
+  if (doctorSelect && !doctorSelect.options.length) {
+    doctors.forEach(doctor => doctorSelect.append(new Option(`${doctor.name} - ${doctor.spec}`, doctor.name)));
+  }
+  if (table) {
+    table.innerHTML = doctors.map(doctor => {
+      const charges = doctorPricing(doctor);
+      return `
+        <tr>
+          <td>${escapeHtml(doctor.name)}</td>
+          <td>${escapeHtml(doctor.spec)}</td>
+          <td>${escapeHtml(formatCurrency(charges.opd))}</td>
+          <td>${charges.video ? escapeHtml(formatCurrency(charges.video)) : "Video unavailable"}</td>
+          <td><span class="badge blue">Admin controlled</span></td>
+        </tr>
+      `;
+    }).join("");
+  }
+  const form = document.querySelector("#adminPricingForm");
+  if (form) {
+    form.bookingCharge.value = pricing.bookingCharge;
+    form.ambulanceBase.value = pricing.ambulanceBase;
+    form.labHomeCollection.value = pricing.labHomeCollection;
+    form.pharmacyDelivery.value = pricing.pharmacyDelivery;
+    const selectedDoctor = doctorSelect?.value || doctors[0]?.name;
+    const charges = pricing.doctors[selectedDoctor] || {opd:0, video:0};
+    form.opdCharge.value = charges.opd;
+    form.videoCharge.value = charges.video;
+  }
+}
+
+function wireAdminPricing() {
+  const form = document.querySelector("#adminPricingForm");
+  const doctorSelect = document.querySelector("#adminPricingDoctor");
+  if (!form || !doctorSelect) return;
+
+  doctorSelect.addEventListener("change", renderAdminPricing);
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    const pricing = loadHospitalPricing();
+    const selectedDoctor = doctorSelect.value;
+    const nextPricing = {
+      ...pricing,
+      bookingCharge: Number(form.bookingCharge.value || 0),
+      ambulanceBase: Number(form.ambulanceBase.value || 0),
+      labHomeCollection: Number(form.labHomeCollection.value || 0),
+      pharmacyDelivery: Number(form.pharmacyDelivery.value || 0),
+      doctors: {
+        ...pricing.doctors,
+        [selectedDoctor]: {
+          opd: Number(form.opdCharge.value || 0),
+          video: Number(form.videoCharge.value || 0)
+        }
+      }
+    };
+    saveHospitalPricing(nextPricing);
+    renderAdminPricing();
+    renderDoctors();
+    const msg = form.querySelector(".success-msg");
+    msg?.classList.add("show");
+    if (window.lucide) lucide.createIcons();
+  });
+}
+
 function fillSelects() {
   const depSelect = document.querySelector("#departmentSelect");
   const docSelect = document.querySelector("#doctorSelect");
   const videoDoctor = document.querySelector("#videoDoctor");
   departments.forEach(([name]) => depSelect?.append(new Option(name, name)));
   populateDoctorSelect();
-  doctors.filter(doctor => doctor.video.slots.length).forEach(doctor => {
+  doctors.filter(doctor => doctor.video.slots.length && doctorPricing(doctor).video > 0).forEach(doctor => {
     videoDoctor?.append(new Option(`${doctor.name} - ${doctor.spec} (${doctor.video.days})`, doctor.name));
   });
   updateVideoConsultFee();
@@ -311,7 +421,7 @@ function updateVideoConsultFee() {
   const feeInput = document.querySelector("#videoConsultFee");
   if (!videoDoctor || !feeInput) return;
   const doctor = doctors.find(item => item.name === videoDoctor.value);
-  feeInput.value = doctor ? `${formatCurrency(doctor.videoFee)} full video consultation fee` : "No video doctor selected";
+  feeInput.value = doctor ? `${formatCurrency(doctorPricing(doctor).video)} full video consultation charge via Razorpay` : "No video doctor selected";
 }
 
 function getDoctorsForSelectedDepartment() {
@@ -383,13 +493,13 @@ function wireAppointmentAvailability() {
     setOptions(slotSelect, schedule.slots, "No slots available for this doctor");
     if (paymentAmount) {
       paymentAmount.value = typeSelect.value === "Video Consultation"
-        ? `${formatCurrency(amount)} full video consultation fee`
-        : `${formatCurrency(amount)} booking charge`;
+        ? `${formatCurrency(amount)} full video consultation charge via Razorpay`
+        : `${formatCurrency(amount)} hospital booking charge via Razorpay`;
     }
     if (paymentPolicyNote) {
       paymentPolicyNote.textContent = typeSelect.value === "Video Consultation"
-        ? "Video consultation requires full payment before confirmation. The meeting link unlocks only after successful payment."
-        : "Hospital visit requires a small booking charge. Doctor consultation fee is paid as per hospital billing policy.";
+        ? "Video consultation requires full admin-defined payment through Razorpay before confirmation. The meeting link unlocks only after successful payment verification."
+        : "Hospital visit requires the admin-defined booking charge through Razorpay. Any OPD consultation billing follows hospital billing policy.";
     }
     if (payBtn) {
       payBtn.dataset.amount = String(amount);
@@ -444,7 +554,7 @@ function renderDoctors() {
       <img loading="lazy" src="${doctor.img}" alt="${doctor.name}">
       <h3>${doctor.name}</h3>
       <p><strong>${doctor.spec}</strong><br>${doctor.exp} experience<br>${doctor.qual}</p>
-      <p class="fee">OPD ${formatCurrency(doctor.opdFee)}${doctor.videoFee ? ` | Video ${formatCurrency(doctor.videoFee)}` : " | Video unavailable"}</p>
+      <p class="fee">Hospital billing: OPD ${formatCurrency(doctorPricing(doctor).opd)}${doctorPricing(doctor).video && doctor.video.slots.length ? ` | Video ${formatCurrency(doctorPricing(doctor).video)}` : " | Video unavailable"}</p>
       <div class="availability-grid">
         <span><strong>Hospital visit</strong>${doctor.opd.days}<small>${doctor.opd.slots.join(" | ")}</small></span>
         <span class="${doctor.video.slots.length ? "" : "muted"}"><strong>Video consult</strong>${doctor.video.days}<small>${doctor.video.slots.length ? doctor.video.slots.join(" | ") : "Doctor has not enabled video consultation"}</small></span>
@@ -464,9 +574,11 @@ function renderServices() {
 function wireForms() {
   const payBtn = document.querySelector("#payBtn");
   payBtn?.addEventListener("click", () => {
-    const amount = Number(payBtn.dataset.amount || bookingCharge);
+    const amount = Number(payBtn.dataset.amount || bookingCharge());
     payBtn.dataset.paid = "true";
-    payBtn.innerHTML = `${iconTag("CheckCircle")} Paid - ${formatCurrency(amount)}`;
+    payBtn.dataset.razorpayPaymentId = `pay_demo_${Date.now()}`;
+    payBtn.dataset.razorpayOrderId = `order_demo_${Date.now()}`;
+    payBtn.innerHTML = `${iconTag("CheckCircle")} Razorpay Paid - ${formatCurrency(amount)}`;
     payBtn.classList.remove("secondary");
     payBtn.classList.add("primary");
     const submitButton = document.querySelector('#appointmentForm button[type="submit"]');
@@ -501,6 +613,9 @@ function wireForms() {
           status: payment === "Paid" ? "Confirmed" : (prepaidVideo ? "Payment Pending" : "Payment Pending"),
           payment,
           amount,
+          gateway: "Razorpay",
+          razorpayPaymentId: payment === "Paid" ? payBtn?.dataset.razorpayPaymentId : "",
+          razorpayOrderId: payBtn?.dataset.razorpayOrderId || `order_demo_${Date.now()}`,
           meetingUnlocked: prepaidVideo && payment === "Paid"
         });
       }
@@ -520,7 +635,10 @@ function wireForms() {
             symptoms: form.querySelector("textarea")?.value || "",
             status: "Confirmed",
             payment: "Paid",
-            amount: selectedDoctor.videoFee,
+            amount: doctorPricing(selectedDoctor).video,
+            gateway: "Razorpay",
+            razorpayPaymentId: `pay_demo_${Date.now()}`,
+            razorpayOrderId: `order_demo_${Date.now()}`,
             meetingUnlocked: true
           });
         }
@@ -552,7 +670,7 @@ function wireScheduleEditor() {
 
   form.addEventListener("submit", event => {
     event.preventDefault();
-    showScheduleSaved("Availability and consultation fees saved. Patients will only see your published OPD/video slots and approved charges.");
+    showScheduleSaved("Availability saved. Patients will only see your published OPD/video slots. Charges remain controlled by hospital admin.");
   });
 
   publish?.addEventListener("click", () => {
@@ -775,8 +893,10 @@ document.addEventListener("DOMContentLoaded", () => {
   renderServices();
   fillSelects();
   renderDashboardAppointments();
+  renderAdminPricing();
   renderInvoicePage();
   wireForms();
+  wireAdminPricing();
   wireScheduleEditor();
   wirePortal();
   wireHeader();

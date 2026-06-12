@@ -33,14 +33,14 @@
         <span><strong>128</strong> Appointments</span><span><strong>42</strong> Lab bookings</span><span><strong>31</strong> Pharmacy orders</span><span><strong>9</strong> Ambulance requests</span><span><strong>Rs. 86k</strong> Payments</span>
       </div>
       <div class="admin-stats finance-stats">
-        <span><strong>Rs. 12.8k</strong> Booking charges</span><span><strong>Rs. 48.6k</strong> Video consults</span><span><strong>Rs. 6.2k</strong> Refunds</span><span><strong>Rs. 31.4k</strong> Doctor settlements</span>
+        <span><strong>Rs. 12.8k</strong> Booking charges</span><span><strong>Rs. 48.6k</strong> Video consults</span><span><strong>Rs. 6.2k</strong> Refunds</span><span><strong>Razorpay</strong> Gateway</span>
       </div>
       <div class="table-wrap">
         <table>
           <thead><tr><th>Module</th><th>Management actions</th><th>Status controls</th></tr></thead>
           <tbody>
             <tr><td>Appointments</td><td>Manage bookings, reschedule, generate invoice</td><td>Pending, Paid, Failed, Refunded</td></tr>
-            <tr><td>Doctors</td><td>Add/edit/delete doctors, schedules and fees</td><td>Active, On leave</td></tr>
+            <tr><td>Doctors</td><td>Add/edit/delete doctors and review published schedules</td><td>Active, On leave</td></tr>
             <tr><td>Departments</td><td>Add/edit/delete departments and doctor count</td><td>Published, Draft</td></tr>
             <tr><td>Patients</td><td>Profiles, reports, prescriptions, payment history</td><td>Verified, Follow-up</td></tr>
             <tr><td>Lab Tests</td><td>Bookings, prescriptions, home collection and reports</td><td>Booked, Collected, Reported</td></tr>
@@ -62,11 +62,40 @@
         <table>
           <thead><tr><th>Finance module</th><th>Rule</th><th>Admin control</th></tr></thead>
           <tbody>
-            <tr><td>Hospital visit booking</td><td>Small booking charge collected before appointment request is processed.</td><td>Collect, refund, generate invoice</td></tr>
-            <tr><td>Video consultation</td><td>Full doctor fee must be paid before meeting link is unlocked.</td><td>Verify payment, unlock link, process refund</td></tr>
-            <tr><td>Doctor fees</td><td>Doctors can set OPD and video fees; admin can review and override.</td><td>Approve, edit, audit history</td></tr>
-            <tr><td>Settlements</td><td>Doctor-wise payouts are calculated from completed paid consultations.</td><td>Pending, settled, disputed</td></tr>
+            <tr><td>Hospital visit booking</td><td>Admin-defined booking charge is collected before appointment request is processed.</td><td>Set charge, collect, refund, generate invoice</td></tr>
+            <tr><td>Video consultation</td><td>Full admin-defined consultation charge must be paid through Razorpay before meeting link is unlocked.</td><td>Verify payment, unlock link, process refund</td></tr>
+            <tr><td>Doctor charges</td><td>Doctors are salaried staff. Admin controls all OPD and video consultation charges.</td><td>Edit charges, audit history</td></tr>
+            <tr><td>Razorpay gateway</td><td>One official hospital gateway handles collection, payment status, refunds and invoice references.</td><td>Order ID, payment ID, refund ID</td></tr>
           </tbody>
+        </table>
+      </div>
+      <section class="schedule-editor form-card portal-table">
+        <div>
+          <span class="eyebrow">Admin pricing</span>
+          <h2>Hospital charge control</h2>
+          <p>Only admin can set appointment, video consultation and service charges. Doctors only publish availability from their panel.</p>
+        </div>
+        <form id="adminPricingForm">
+          <div class="form-grid">
+            <label>Hospital visit booking charge<input name="bookingCharge" type="number" min="0" value="199"></label>
+            <label>Ambulance base charge<input name="ambulanceBase" type="number" min="0" value="1200"></label>
+            <label>Lab home collection charge<input name="labHomeCollection" type="number" min="0" value="149"></label>
+            <label>Pharmacy delivery charge<input name="pharmacyDelivery" type="number" min="0" value="59"></label>
+            <label class="wide">Doctor consultation charges<select id="adminPricingDoctor" name="doctor"></select></label>
+            <label>OPD consultation charge<input name="opdCharge" type="number" min="0" value="900"></label>
+            <label>Video consultation charge<input name="videoCharge" type="number" min="0" value="1200"></label>
+            <label>Payment gateway<input readonly value="Razorpay"></label>
+          </div>
+          <div class="form-actions">
+            <button class="btn primary" type="submit"><i data-lucide="save"></i> Save Charges</button>
+          </div>
+          <p class="success-msg">Charges saved. Patient forms, video payments and invoices will use admin-approved pricing.</p>
+        </form>
+      </section>
+      <div class="table-wrap portal-table">
+        <table>
+          <thead><tr><th>Doctor</th><th>Department</th><th>OPD charge</th><th>Video charge</th><th>Pricing owner</th></tr></thead>
+          <tbody id="adminPricingTable"></tbody>
         </table>
       </div>
       <div class="table-wrap portal-table">
